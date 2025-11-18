@@ -1,0 +1,2590 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Articles Inspirants - Coach Zakari Tabouala | Développement Personnel & Leadership</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Découvrez les articles inspirants de Coach Zakari Tabouala sur le développement personnel, le leadership, la politique, la santé et la transformation. Conseils pratiques pour réussir dans tous les domaines de votre vie.">
+  <meta name="keywords" content="coach zakari, développement personnel, leadership, motivation, transformation, articles inspirants, MCT, Zakari Tabouala, réussite, croissance personnelle">
+  <meta name="author" content="Coach Zakari Tabouala">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.coachzakari.com/articles">
+  
+  <!-- Schema.org markup for Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Articles Inspirants - Coach Zakari Tabouala",
+    "description": "Découvrez les articles inspirants de Coach Zakari Tabouala sur le développement personnel, le leadership, la politique, la santé et la transformation.",
+    "publisher": {
+      "@type": "Person",
+      "name": "Coach Zakari Tabouala",
+      "url": "https://www.coachzakari.com"
+    },
+    "mainEntity": {
+      "@type": "ItemList",
+      "numberOfItems": 20,
+      "itemListOrder": "Descending"
+    }
+  }
+  </script>
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Articles Inspirants - Coach Zakari Tabouala">
+  <meta property="og:description" content="Découvrez les enseignements et réflexions exclusives de Coach Zakari pour transformer votre vie et votre leadership">
+  <meta property="og:image" content="https://i.imgur.com/abc123.jpg">
+  <meta property="og:url" content="https://www.coachzakari.com/articles">
+  <meta property="og:site_name" content="Coach Zakari Tabouala">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Articles Inspirants - Coach Zakari Tabouala">
+  <meta name="twitter:description" content="Découvrez les enseignements et réflexions exclusives de Coach Zakari pour transformer votre vie et votre leadership">
+  <meta name="twitter:image" content="https://i.imgur.com/abc123.jpg">
+  <meta name="twitter:creator" content="@CoachZakari">
+  
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;500;600;700&display=swap">
+  
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+  
+  <style>
+    /* Variables et styles de base */
+    :root {
+      --primary: #001f3f;
+      --secondary: #0074D9;
+      --accent: gold;
+      --text-dark: #0c0f26;
+      --text-light: #f5f5f5;
+      --bg-dark: #0c0f26;
+      --filter-label: #5dade2;
+      --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      --glow: 0 0 15px rgba(93, 173, 226, 0.6);
+      --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+    
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-light);
+      overflow-x: hidden;
+      line-height: 1.7;
+      position: relative;
+      background: linear-gradient(135deg, #0c0f26 0%, #1a2a6c 100%);
+    }
+    
+    h1, h2, h3, h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+    }
+    
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+    
+    button {
+      cursor: pointer;
+      border: none;
+      outline: none;
+      transition: var(--transition);
+    }
+    
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .section {
+      padding: 100px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .section-title {
+      font-size: 2.8rem;
+      text-align: center;
+      margin-bottom: 60px;
+      position: relative;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      animation: pulseGlow 3s infinite alternate;
+    }
+    
+    @keyframes pulseGlow {
+      0% {
+        text-shadow: 0 0 5px var(--accent);
+      }
+      100% {
+        text-shadow: 0 0 20px var(--accent), 0 0 30px rgba(255, 215, 0, 0.5);
+      }
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.4rem;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 60px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    /* HEADER ET NAVIGATION */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 15px 0;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+      transition: top 0.3s;
+    }
+    
+    .header.hidden {
+      top: -100px;
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--accent);
+      z-index: 1001;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    }
+    
+    .logo img {
+      height: 50px;
+      width: auto;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+      animation: spinGlow 10s linear infinite;
+    }
+    
+    @keyframes spinGlow {
+      0% {
+        transform: rotate(0deg);
+        box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+      }
+      50% {
+        box-shadow: 0 0 20px var(--accent), 0 0 30px rgba(255, 215, 0, 0.6);
+      }
+      100% {
+        transform: rotate(360deg);
+        box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+      }
+    }
+    
+    /* Menu Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 35px;
+      height: 30px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 1001;
+      position: relative;
+    }
+    
+    .hamburger span {
+      display: block;
+      height: 3px;
+      width: 100%;
+      background-color: var(--accent);
+      border-radius: 10px;
+      transition: var(--transition);
+    }
+    
+    /* Menu de navigation */
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .nav-menu li {
+      margin: 0 12px;
+    }
+    
+    .nav-menu li a {
+      position: relative;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 5px 0;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+    
+    .nav-menu li a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-menu li a:hover::after,
+    .nav-menu li a.active::after {
+      width: 100%;
+    }
+    
+    .nav-menu li a:hover,
+    .nav-menu li a.active {
+      color: var(--accent);
+    }
+    
+    /* SECTION ARTICLES */
+    .articles-section {
+      padding: 160px 0 100px;
+      position: relative;
+    }
+    
+    .articles-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/diagmonds.png');
+      opacity: 0.1;
+    }
+    
+    /* Barre de filtres et recherche améliorée */
+    .article-filters {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 40px;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .filter-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 10px 15px;
+      border-radius: 50px;
+      box-shadow: var(--glow);
+    }
+    
+    .filter-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--filter-label);
+      text-shadow: 0 0 5px rgba(93, 173, 226, 0.5);
+    }
+    
+    .filter-select {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      padding: 8px 15px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .filter-select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(255,215,0,0.3);
+      outline: none;
+    }
+    
+    .search-bar {
+      display: flex;
+      max-width: 400px;
+      width: 100%;
+      box-shadow: var(--glow);
+      border-radius: 30px;
+      overflow: hidden;
+    }
+    
+    .search-input {
+      flex-grow: 1;
+      padding: 12px 20px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(0, 0, 0, 0.3);
+      color: #fff;
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+    
+    .search-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(255,215,0,0.3);
+      outline: none;
+    }
+    
+    .search-btn {
+      background: var(--accent);
+      color: #000;
+      padding: 0 25px;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .search-btn:hover {
+      background: #fff;
+      color: var(--secondary);
+      transform: scale(1.05);
+    }
+    
+    /* ADMIN BUTTON - Icône de clé */
+    .footer-admin-btn {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: 50px;
+      padding: 0;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 1.1rem;
+      margin: 15px auto 0;
+      box-shadow: var(--glow);
+    }
+    
+    .footer-admin-btn:hover {
+      background: rgba(255, 215, 0, 0.2);
+      transform: scale(1.1);
+    }
+    
+    /* ADMIN MODAL - Amélioré */
+    .admin-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+    
+    .admin-modal.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    
+    .admin-form {
+      background: var(--bg-dark);
+      border: 2px solid var(--accent);
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 600px;
+      width: 90%;
+      position: relative;
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    
+    .close-modal {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.8rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .close-modal:hover {
+      color: var(--accent);
+      transform: rotate(90deg);
+    }
+    
+    .admin-form h3 {
+      font-size: 1.8rem;
+      margin-bottom: 25px;
+      color: var(--accent);
+      text-align: center;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: var(--filter-label);
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.3);
+      color: #fff;
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+    
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(255,215,0,0.3);
+      outline: none;
+    }
+    
+    .form-group textarea {
+      height: 120px;
+      resize: vertical;
+    }
+    
+    .password-group {
+      position: relative;
+    }
+    
+    .password-toggle {
+      position: absolute;
+      right: 15px;
+      top: 40px;
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.6);
+      cursor: pointer;
+    }
+    
+    .submit-btn {
+      background: var(--accent);
+      color: #000;
+      padding: 14px 30px;
+      border: none;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: var(--transition);
+      display: block;
+      margin: 30px auto 0;
+      width: 100%;
+      max-width: 300px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .submit-btn:hover {
+      background: #fff;
+      color: var(--secondary);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    }
+    
+    .submit-btn::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: rgba(255, 255, 255, 0.1);
+      transform: rotate(30deg);
+      transition: all 0.6s ease;
+    }
+    
+    .submit-btn:hover::after {
+      transform: rotate(30deg) translate(100%, 100%);
+    }
+    
+    /* UPLOAD IMGUR */
+    .imgur-upload-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    
+    .imgur-upload-btn {
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: var(--transition);
+    }
+    
+    .imgur-upload-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--accent);
+    }
+    
+    .imgur-progress {
+      height: 5px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 5px;
+      overflow: hidden;
+      margin-top: 5px;
+      display: none;
+    }
+    
+    .imgur-progress-bar {
+      height: 100%;
+      width: 0%;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+    
+    .imgur-status {
+      font-size: 0.8rem;
+      margin-top: 5px;
+      color: var(--filter-label);
+      display: none;
+    }
+    
+    /* GRID D'ARTICLES - Taille réduite */
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+    
+    .article-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      overflow: hidden;
+      transition: var(--transition);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transform: translateY(30px);
+      opacity: 0;
+      box-shadow: var(--card-shadow);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .article-card.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .article-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), var(--glow);
+      border-color: var(--accent);
+    }
+    
+    .article-image {
+      position: relative;
+      height: 180px;
+      overflow: hidden;
+    }
+    
+    .article-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .article-card:hover .article-image img {
+      transform: scale(1.05);
+    }
+    
+    .article-content {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    
+    .article-category {
+      display: inline-block;
+      background: rgba(255, 215, 0, 0.15);
+      color: var(--accent);
+      padding: 5px 12px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    
+    .article-title {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      line-height: 1.4;
+      min-height: 55px;
+    }
+    
+    .article-excerpt {
+      margin-bottom: 15px;
+      flex-grow: 1;
+      opacity: 0.9;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    
+    .read-more-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 215, 0, 0.1);
+      color: var(--accent);
+      padding: 10px 18px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-top: auto;
+      transition: var(--transition);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      width: 100%;
+      justify-content: center;
+    }
+    
+    .read-more-btn:hover {
+      background: rgba(255, 215, 0, 0.2);
+      transform: translateY(-3px);
+    }
+    
+    .article-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+    
+    .article-date {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    .engagement-stats {
+      display: flex;
+      gap: 12px;
+    }
+    
+    .stat-bubble {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+    }
+    
+    /* ARTICLE MODAL - Plein écran mobile */
+    .article-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1001;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      overflow-y: auto;
+      padding: 0;
+    }
+    
+    .article-modal.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    
+    .article-container {
+      width: 100%;
+      max-width: 900px;
+      background: var(--bg-dark);
+      border-radius: 0;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
+      border: none;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    @media (min-width: 768px) {
+      .article-modal {
+        padding: 40px 20px;
+      }
+      
+      .article-container {
+        width: 90%;
+        border-radius: 15px;
+        border: 2px solid var(--accent);
+        height: auto;
+        max-height: 90vh;
+      }
+    }
+    
+    .close-article {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 10;
+      transition: var(--transition);
+    }
+    
+    .close-article:hover {
+      background: var(--accent);
+      color: #000;
+      transform: scale(1.1);
+    }
+    
+    .article-header {
+      position: relative;
+      height: 300px;
+      overflow: hidden;
+    }
+    
+    @media (min-width: 768px) {
+      .article-header {
+        height: 400px;
+      }
+    }
+    
+    .article-header img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .article-header-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 25px;
+      background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    }
+    
+    .article-header h2 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      color: #fff;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.7);
+    }
+    
+    @media (min-width: 768px) {
+      .article-header h2 {
+        font-size: 2.5rem;
+      }
+    }
+    
+    .article-header .article-category {
+      margin-bottom: 15px;
+    }
+    
+    .article-header .article-date {
+      color: rgba(255,255,255,0.8);
+      font-size: 1rem;
+    }
+    
+    .article-body {
+      padding: 25px;
+      flex-grow: 1;
+      overflow-y: auto;
+    }
+    
+    @media (min-width: 768px) {
+      .article-body {
+        padding: 40px;
+        max-height: 60vh;
+      }
+    }
+    
+    .article-content-full {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+    
+    .article-content-full p {
+      margin-bottom: 20px;
+    }
+    
+    .article-content-full h3 {
+      font-size: 1.8rem;
+      margin: 30px 0 15px;
+      color: var(--accent);
+    }
+    
+    /* LIRE SUIVANT */
+    .read-next-container {
+      text-align: center;
+      margin: 40px 0 20px;
+    }
+    
+    .read-next-btn {
+      background: var(--accent);
+      color: #000;
+      padding: 12px 25px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .read-next-btn:hover {
+      background: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    .article-footer {
+      padding: 20px 25px;
+      background: rgba(0, 0, 0, 0.3);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    @media (min-width: 768px) {
+      .article-footer {
+        padding: 20px 40px;
+      }
+    }
+    
+    .article-stats {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 20px;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    
+    /* FOOTER */
+    .footer {
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: #fff;
+      padding: 80px 0 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .footer::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/black-linen.png');
+      opacity: 0.1;
+      pointer-events: none;
+    }
+    
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      gap: 40px;
+    }
+    
+    .footer-logo {
+      flex: 1;
+      min-width: 300px;
+      margin-bottom: 30px;
+    }
+    
+    .footer-logo img {
+      height: 70px;
+      margin-bottom: 25px;
+      border-radius: 50%;
+      border: 3px solid var(--accent);
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
+    }
+    
+    .footer-logo p {
+      max-width: 350px;
+      line-height: 1.8;
+      font-size: 1.1rem;
+    }
+    
+    .footer-links {
+      flex: 1;
+      min-width: 200px;
+      margin-bottom: 30px;
+    }
+    
+    .footer-links h3 {
+      font-size: 1.6rem;
+      margin-bottom: 25px;
+      color: var(--accent);
+      position: relative;
+      padding-bottom: 12px;
+    }
+    
+    .footer-links h3::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    
+    .footer-links ul {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 15px;
+    }
+    
+    .footer-links a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: var(--transition);
+      font-size: 1.1rem;
+    }
+    
+    .footer-links a:hover {
+      color: var(--accent);
+      transform: translateX(8px);
+    }
+    
+    .footer-contact {
+      flex: 1;
+      min-width: 300px;
+      margin-bottom: 30px;
+    }
+    
+    .footer-contact h3 {
+      font-size: 1.6rem;
+      margin-bottom: 25px;
+      color: var(--accent);
+      position: relative;
+      padding-bottom: 12px;
+    }
+    
+    .footer-contact h3::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    
+    .contact-icon {
+      width: 45px;
+      height: 45px;
+      background: rgba(255, 215, 0, 0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 25px;
+      flex-wrap: wrap;
+    }
+    
+    .social-links a {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      transition: var(--transition);
+    }
+    
+    .social-links a:hover {
+      background: var(--accent);
+      color: var(--primary);
+      transform: translateY(-8px);
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding-top: 50px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      margin-top: 50px;
+      font-size: 1.1rem;
+      opacity: 0.8;
+    }
+    
+    /* Chargement */
+    .loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      grid-column: 1 / -1;
+    }
+    
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid rgba(255, 215, 0, 0.3);
+      border-top: 5px solid var(--accent);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* Bouton retour en haut */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background: var(--accent);
+      color: #000;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 99;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.4s ease;
+      font-size: 1.3rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+    
+    .back-to-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .back-to-top:hover {
+      background: #fff;
+      transform: translateY(-5px);
+    }
+    
+    /* HERO BANNER */
+    .hero-banner {
+      position: relative;
+      height: 600px;
+      background: linear-gradient(rgba(12, 15, 38, 0.9), rgba(26, 42, 108, 0.9)), 
+                  url('https://images.unsplash.com/photo-1506784983877-45594efa4cbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=1949&q=80') center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 20px;
+      margin-top: 80px;
+      overflow: hidden;
+    }
+    
+    .hero-content {
+      max-width: 800px;
+      z-index: 2;
+    }
+    
+    .hero-title {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+      animation: textGlow 3s infinite alternate;
+    }
+    
+    @keyframes textGlow {
+      0% { text-shadow: 0 0 10px rgba(255, 215, 0, 0.4); }
+      100% { text-shadow: 0 0 30px var(--accent), 0 0 50px rgba(255, 215, 0, 0.7); }
+    }
+    
+    .hero-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 40px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .hero-search {
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+    }
+    
+    .hero-search input {
+      width: 100%;
+      padding: 18px 30px;
+      border-radius: 50px;
+      border: 2px solid var(--accent);
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      font-size: 1.1rem;
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.3);
+      backdrop-filter: blur(10px);
+    }
+    
+    .hero-search button {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--accent);
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .hero-search button:hover {
+      background: #fff;
+      transform: translateY(-50%) scale(1.1);
+    }
+    
+    /* FEATURED ARTICLES */
+    .featured-section {
+      padding: 80px 0;
+      background: linear-gradient(135deg, #0c0f26 0%, #1a2a6c 100%);
+      position: relative;
+    }
+    
+    .featured-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/diagmonds.png');
+      opacity: 0.1;
+    }
+    
+    .featured-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    
+    .featured-title {
+      font-size: 2.5rem;
+      display: inline-block;
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    .featured-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .featured-article {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      overflow: hidden;
+      transition: var(--transition);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      box-shadow: var(--card-shadow);
+    }
+    
+    .featured-article:hover {
+      transform: translateY(-10px);
+      border-color: var(--accent);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), var(--glow);
+    }
+    
+    .featured-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: var(--accent);
+      color: #000;
+      padding: 5px 15px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      z-index: 2;
+    }
+    
+    .featured-image {
+      height: 250px;
+      overflow: hidden;
+    }
+    
+    .featured-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .featured-article:hover .featured-image img {
+      transform: scale(1.05);
+    }
+    
+    .featured-content {
+      padding: 25px;
+    }
+    
+    .featured-category {
+      display: inline-block;
+      background: rgba(255, 215, 0, 0.15);
+      color: var(--accent);
+      padding: 5px 15px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+    
+    .featured-article-title {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      line-height: 1.4;
+    }
+    
+    .featured-stats {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+    }
+    
+    /* PAGINATION AMÉLIORÉE */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 50px 0 30px;
+      gap: 10px;
+    }
+    
+    .pagination-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: white;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .pagination-btn:hover, .pagination-btn.active {
+      background: var(--accent);
+      color: #000;
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+    
+    .pagination-btn.disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+    
+    /* ANIMATIONS AU DÉFILEMENT */
+    [data-animate] {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    
+    [data-animate].animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 1200px) {
+      .section-title {
+        font-size: 2.5rem;
+      }
+      
+      .article-header {
+        height: 350px;
+      }
+    }
+    
+    @media (max-width: 992px) {
+      .articles-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      }
+      
+      .article-filters {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .filter-group {
+        width: 100%;
+      }
+      
+      .footer-logo img {
+        height: 60px;
+      }
+      
+      .article-header {
+        height: 300px;
+      }
+      
+      .hero-banner {
+        height: 500px;
+      }
+      
+      .hero-title {
+        font-size: 2.8rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.3rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .section-title {
+        font-size: 2.3rem;
+      }
+      
+      .section-subtitle {
+        font-size: 1.2rem;
+      }
+      
+      /* Menu Hamburger */
+      .hamburger {
+        display: flex;
+      }
+      
+      .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 70%;
+        max-width: 300px;
+        background: rgba(0, 0, 0, 0.95);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: right 0.4s ease;
+        padding-top: 100px;
+      }
+      
+      .nav-menu.active {
+        right: 0;
+      }
+      
+      .nav-menu li {
+        margin: 25px 0;
+        margin-left: 0;
+      }
+      
+      .section {
+        padding: 80px 0;
+      }
+      
+      .footer-logo img {
+        height: 55px;
+      }
+      
+      .admin-form {
+        padding: 20px;
+      }
+      
+      .article-header {
+        height: 250px;
+      }
+      
+      .article-header h2 {
+        font-size: 2rem;
+      }
+      
+      .article-body {
+        padding: 20px;
+      }
+      
+      .hero-banner {
+        height: 450px;
+      }
+      
+      .hero-title {
+        font-size: 2.3rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .articles-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .article-container {
+        width: 95%;
+      }
+      
+      .footer-logo img {
+        height: 50px;
+      }
+      
+      .filter-group {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .article-header {
+        height: 200px;
+      }
+      
+      .article-header h2 {
+        font-size: 1.7rem;
+      }
+      
+      .article-stats {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header" id="main-header">
+    <div class="container nav-container">
+      <div class="logo-container">
+        <a href="#" class="logo">
+          <img src="images/logo.png" alt="Logo Coach Zakari - Développement Personnel et Leadership">
+          Coach Zakari
+        </a>
+      </div>
+      
+      <button class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <!-- Menu de navigation -->
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="temoignages.html">Témoignages</a></li>
+        <li><a href="videos.html">Vidéos</a></li>
+        <li><a href="formations.html">Formations</a></li>
+        <li><a href="articles.html" class="active">Articles</a></li>
+        <li><a href="livres.html">Livres</a></li>
+        <li><a href="a-propos.html">À propos</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- BANNIÈRE HERO -->
+  <section class="hero-banner" data-animate>
+    <div class="hero-content">
+      <h1 class="hero-title">Sagesse & Transformation</h1>
+      <p class="hero-subtitle">Découvrez les enseignements exclusifs de Coach Zakari pour transformer votre vie, votre leadership et votre vision du monde</p>
+      
+      <div class="hero-search">
+        <input type="text" placeholder="Rechercher des articles par mot-clé...">
+        <button><i class="fas fa-search"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- BARRE DE FILTRES AMÉLIORÉE -->
+  <section class="popular-categories" data-animate>
+    <div class="container">
+      <div class="article-filters">
+        <div class="filter-group">
+          <span class="filter-label">Catégorie:</span>
+          <select class="filter-select" id="category-filter">
+            <option value="all">Toutes les catégories</option>
+            <option value="Développement personnel">Développement personnel</option>
+            <option value="Leadership">Leadership</option>
+            <option value="Actualité politique">Actualité politique</option>
+            <option value="Santé et bien-être">Santé et bien-être</option>
+            <option value="Foi et spiritualité">Foi et spiritualité</option>
+            <option value="Relations humaines">Relations humaines</option>
+            <option value="Carrière et succès">Carrière et succès</option>
+            <option value="Éducation">Éducation</option>
+            <option value="Vision MCT">Vision MCT</option>
+            <option value="Conseils pratiques">Conseils pratiques</option>
+            <option value="Économie">Économie</option>
+            <option value="Technologie">Technologie</option>
+            <option value="Culture">Culture</option>
+            <option value="Relations internationales">Relations internationales</option>
+          </select>
+        </div>
+        
+        <div class="filter-group">
+          <span class="filter-label">Trier par:</span>
+          <select class="filter-select" id="sort-filter">
+            <option value="newest">Plus récent</option>
+            <option value="oldest">Plus ancien</option>
+            <option value="popular">Plus populaire</option>
+          </select>
+        </div>
+        
+        <div class="search-bar">
+          <input type="text" class="search-input" id="search-input" placeholder="Rechercher des articles...">
+          <button class="search-btn"><i class="fas fa-search"></i></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTICLES EN VEDETTE (chargés dynamiquement) -->
+  <section class="featured-section" data-animate>
+    <div class="featured-header">
+      <h2 class="featured-title">Articles en Vedette</h2>
+      <p class="section-subtitle">Les articles les plus populaires avec plus de 1000 vues</p>
+    </div>
+    
+    <div class="featured-grid" id="featured-grid">
+      <div class="loading">
+        <div class="spinner"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION ARTICLES -->
+  <section class="articles-section section" data-animate>
+    <div class="container">
+      <h1 class="section-title">📚 Tous les Articles</h1>
+      <p class="section-subtitle">Parcourez notre bibliothèque complète d'articles inspirants pour votre croissance personnelle et professionnelle</p>
+      
+      <!-- Grille d'articles -->
+      <div class="articles-grid" id="articles-grid">
+        <!-- Les articles seront chargés dynamiquement ici -->
+        <div class="loading">
+          <div class="spinner"></div>
+        </div>
+      </div>
+      
+      <!-- PAGINATION -->
+      <div class="pagination">
+        <button class="pagination-btn disabled"><i class="fas fa-chevron-left"></i></button>
+        <button class="pagination-btn active">1</button>
+        <button class="pagination-btn">2</button>
+        <button class="pagination-btn">3</button>
+        <button class="pagination-btn">4</button>
+        <button class="pagination-btn">5</button>
+        <button class="pagination-btn"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL ADMIN avec sécurité -->
+  <div class="admin-modal" id="admin-modal">
+    <div class="admin-form">
+      <button class="close-modal" id="close-modal">&times;</button>
+      
+      <!-- Section d'authentification -->
+      <div id="password-section">
+        <h3>Accès Administrateur</h3>
+        <div class="form-group password-group">
+          <label for="admin-password">Mot de passe admin</label>
+          <input type="password" id="admin-password" required>
+          <button type="button" class="password-toggle" id="password-toggle">
+            <i class="fas fa-eye"></i>
+          </button>
+        </div>
+        <button id="login-btn" class="submit-btn">Se connecter</button>
+      </div>
+      
+      <!-- Formulaire d'article (caché initialement) -->
+      <div id="article-form-section" style="display: none;">
+        <h3>Gestion des Articles</h3>
+        
+        <!-- Formulaire d'ajout -->
+        <form id="article-form">
+          <div class="form-group">
+            <label for="article-title">Titre de l'article</label>
+            <input type="text" id="article-title" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="article-content">Contenu</label>
+            <textarea id="article-content" required></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label for="article-category">Catégorie</label>
+            <select id="article-category" required>
+              <option value="Développement personnel">Développement personnel</option>
+              <option value="Leadership">Leadership</option>
+              <option value="Actualité politique">Actualité politique</option>
+              <option value="Santé et bien-être">Santé et bien-être</option>
+              <option value="Foi et spiritualité">Foi et spiritualité</option>
+              <option value="Relations humaines">Relations humaines</option>
+              <option value="Carrière et succès">Carrière et succès</option>
+              <option value="Éducation">Éducation</option>
+              <option value="Vision MCT">Vision MCT</option>
+              <option value="Conseils pratiques">Conseils pratiques</option>
+              <option value="Économie">Économie</option>
+              <option value="Technologie">Technologie</option>
+              <option value="Culture">Culture</option>
+              <option value="Relations internationales">Relations internationales</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="article-image-url">URL de l'image</label>
+            <input type="text" id="article-image-url" placeholder="https://...">
+            
+            <div class="imgur-upload-container">
+              <input type="file" id="imgur-upload" accept="image/*" style="display: none;">
+              <button type="button" class="imgur-upload-btn" onclick="document.getElementById('imgur-upload').click()">
+                <i class="fas fa-cloud-upload-alt"></i> Télécharger une image
+              </button>
+              <div class="imgur-progress">
+                <div class="imgur-progress-bar"></div>
+              </div>
+              <div class="imgur-status"></div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="article-author">Auteur</label>
+            <input type="text" id="article-author" value="Coach Zakari Tabouala">
+          </div>
+          
+          <button type="submit" class="submit-btn">Publier l'article</button>
+        </form>
+        
+        <!-- Section suppression d'articles -->
+        <div style="margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px;">
+          <h4 style="color: var(--accent); margin-bottom: 20px;">Gestion des articles existants</h4>
+          <div id="admin-articles-list" style="max-height: 300px; overflow-y: auto; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 8px;">
+            <!-- Liste des articles pour suppression -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL ARTICLE -->
+  <div class="article-modal" id="article-modal">
+    <div class="article-container">
+      <button class="close-article" id="close-article">&times;</button>
+      
+      <div class="article-header">
+        <img id="article-modal-image" src="" alt="Image de l'article">
+        <div class="article-header-content">
+          <h2 id="article-modal-title"></h2>
+          <div class="article-category" id="article-modal-category"></div>
+          <div class="article-date" id="article-modal-date"></div>
+        </div>
+      </div>
+      
+      <div class="article-body">
+        <div class="article-content-full" id="article-modal-content"></div>
+        
+        <div class="read-next-container">
+          <button class="read-next-btn" id="read-next-btn">
+            <i class="fas fa-book-reader"></i> Lire l'article suivant
+          </button>
+        </div>
+      </div>
+      
+      <div class="article-footer">
+        <div class="article-stats">
+          <div id="article-views"><i class="fas fa-eye"></i> 0 vues</div>
+          <div id="article-shares"><i class="fas fa-share-alt"></i> 0 partages</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer id="footer" class="footer" data-animate>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="images/logo.png" alt="Logo Coach Zakari - Transformation Personnelle">
+          <h3>Coach Zakari Tabouala</h3>
+          <p>Formateur des leaders, voix pour les nations. Rejoignez le mouvement MCT "Motivation, Compassion et transformation" pour une transformation personnelle et collective.</p>
+        </div>
+        
+        <div class="footer-links">
+          <h3>Liens Rapides</h3>
+          <ul>
+            <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+            <li><a href="vision.html"><i class="fas fa-eye"></i> Vision</a></li>
+            <li><a href="adhesion.html"><i class="fas fa-globe"></i> Adhésion</a></li>
+            <li><a href="temoignages.html"><i class="fas fa-comments"></i> Témoignages</a></li>
+            <li><a href="formations.html"><i class="fas fa-graduation-cap"></i> Formations</a></li>
+            <li><a href="livres.html"><i class="fas fa-book"></i> Livres</a></li>
+            <li><a href="articles.html"><i class="fas fa-newspaper"></i> Articles</a></li>
+            <li><a href="a-propos.html"><i class="fas fa-user-circle"></i> À propos</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-contact">
+          <h3>Contact</h3>
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div>Yaoundé, Cameroun</div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div>+237 620 544 924</div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>contact@coachzakari.com</div>
+            </div>
+          </div>
+          
+          <div class="social-links">
+            <a href="https://facebook.com/CoachZakariTabouala" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/CoachZakari" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com/coachzakaritabouala" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://youtube.com/coachzakaritabouala" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://wa.me/237620544924" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://tiktok.com/@Coachzakaritabouala" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://linkedin.com/in/Coachzakaritabouala" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2023 Coach Zakari Tabouala. Tous droits réservés. | <a href="#">Confidentialité</a> | <a href="#">Conditions d'utilisation</a></p>
+        <button class="footer-admin-btn" id="footer-admin-btn" title="Accès admin">
+          <i class="fas fa-key"></i>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bouton retour en haut -->
+  <button class="back-to-top" id="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script>
+    // Configuration Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyBAs1GzpdwMoWFW_gKK5YfCGr4xYSp6MC0",
+      authDomain: "coach-zakari-mouvement.firebaseapp.com",
+      databaseURL: "https://coach-zakari-mouvement-default-rtdb.firebaseio.com",
+      projectId: "coach-zakari-mouvement",
+      storageBucket: "coach-zakari-mouvement.firebasestorage.app",
+      messagingSenderId: "209294826429",
+      appId: "1:209294826429:web:65860210e37c0c152310d4"
+    };
+
+    // Initialiser Firebase
+    firebase.initializeApp(firebaseConfig);
+    const database = firebase.database();
+    const articlesRef = database.ref('articles');
+
+    // Éléments DOM
+    const articlesGrid = document.getElementById('articles-grid');
+    const featuredGrid = document.getElementById('featured-grid');
+    const adminModal = document.getElementById('admin-modal');
+    const closeModal = document.getElementById('close-modal');
+    const articleForm = document.getElementById('article-form');
+    const passwordToggle = document.getElementById('password-toggle');
+    const adminPassword = document.getElementById('admin-password');
+    const loginBtn = document.getElementById('login-btn');
+    const passwordSection = document.getElementById('password-section');
+    const articleFormSection = document.getElementById('article-form-section');
+    const articleModal = document.getElementById('article-modal');
+    const closeArticle = document.getElementById('close-article');
+    const articleModalImage = document.getElementById('article-modal-image');
+    const articleModalTitle = document.getElementById('article-modal-title');
+    const articleModalCategory = document.getElementById('article-modal-category');
+    const articleModalDate = document.getElementById('article-modal-date');
+    const articleModalContent = document.getElementById('article-modal-content');
+    const categoryFilter = document.getElementById('category-filter');
+    const sortFilter = document.getElementById('sort-filter');
+    const searchInput = document.getElementById('search-input');
+    const backToTop = document.getElementById('back-to-top');
+    const articleViews = document.getElementById('article-views');
+    const articleShares = document.getElementById('article-shares');
+    const imgurUpload = document.getElementById('imgur-upload');
+    const imgurProgress = document.querySelector('.imgur-progress');
+    const imgurProgressBar = document.querySelector('.imgur-progress-bar');
+    const imgurStatus = document.querySelector('.imgur-status');
+    const footerAdminBtn = document.getElementById('footer-admin-btn');
+    const mainHeader = document.getElementById('main-header');
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+    const readNextBtn = document.getElementById('read-next-btn');
+    const adminArticlesList = document.getElementById('admin-articles-list');
+
+    // Variables globales
+    let currentArticleId = null;
+    let allArticles = [];
+    let lastScrollPosition = 0;
+    const IMGUR_CLIENT_ID = "7504d0c95b08dbe";
+    const VIEW_THRESHOLD = 1000; // Seuil pour les articles en vedette
+    
+    // Images d'articles préchargées
+    const articleImages = [
+      'https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80',
+      'https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80',
+      'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80',
+      'https://images.unsplash.com/photo-1504714146340-959ca07e1f38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80',
+      'https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80',
+      'https://images.unsplash.com/photo-1496065187957-7a07a0d0cbb8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80',
+      'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80'
+    ];
+
+    // Fonction pour obtenir une image d'article aléatoire
+    function getRandomArticleImage() {
+      return articleImages[Math.floor(Math.random() * articleImages.length)];
+    }
+
+    // Fonction pour afficher les articles
+    function displayArticles(articles) {
+      articlesGrid.innerHTML = '';
+      
+      if (articles.length === 0) {
+        articlesGrid.innerHTML = `
+          <div class="no-results" style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+            <i class="fas fa-newspaper" style="font-size: 3rem; margin-bottom: 20px;"></i>
+            <h3>Aucun article trouvé</h3>
+            <p>Essayez de modifier vos filtres ou votre recherche</p>
+          </div>
+        `;
+        return;
+      }
+      
+      articles.forEach(article => {
+        const articleCard = document.createElement('div');
+        articleCard.className = 'article-card';
+        articleCard.dataset.category = article.category;
+        articleCard.dataset.title = article.title.toLowerCase();
+        
+        // Utiliser l'image de l'article ou une image par défaut
+        let imageUrl = article.imageUrl || getRandomArticleImage();
+        
+        // Formater la date
+        const date = new Date(article.timestamp);
+        const formattedDate = date.toLocaleDateString('fr-FR', {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric'
+        });
+        
+        // Créer un extrait du contenu
+        const excerpt = article.content.substring(0, 120) + '...';
+        
+        articleCard.innerHTML = `
+          <div class="article-image">
+            <img src="${imageUrl}" alt="${article.title} - Coach Zakari Tabouala">
+          </div>
+          <div class="article-content">
+            <div class="article-category">${article.category}</div>
+            <h3 class="article-title">${article.title}</h3>
+            <p class="article-excerpt">${excerpt}</p>
+            <button class="read-more-btn">
+              <i class="fas fa-book-reader"></i> Lire l'article complet
+            </button>
+            <div class="article-meta">
+              <div class="article-date">
+                <i class="far fa-calendar-alt"></i> ${formattedDate}
+              </div>
+              <div class="engagement-stats">
+                <div class="stat-bubble"><i class="fas fa-eye"></i> ${article.views || 0}</div>
+                <div class="stat-bubble"><i class="fas fa-heart"></i> ${article.likes || 0}</div>
+              </div>
+            </div>
+          </div>
+        `;
+        
+        // Ouvrir l'article au clic sur le bouton "Lire l'article complet"
+        const readMoreBtn = articleCard.querySelector('.read-more-btn');
+        readMoreBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          openArticleModal(article);
+        });
+        
+        // Ouvrir l'article au clic sur la carte (sauf sur le bouton)
+        articleCard.addEventListener('click', (e) => {
+          if (!e.target.closest('.read-more-btn')) {
+            openArticleModal(article);
+          }
+        });
+        
+        articlesGrid.appendChild(articleCard);
+      });
+      
+      // Animation des cartes d'articles
+      setTimeout(() => {
+        document.querySelectorAll('.article-card').forEach(card => {
+          card.classList.add('visible');
+        });
+      }, 100);
+    }
+
+    // Fonction pour afficher les articles en vedette
+    function displayFeaturedArticles(articles) {
+      featuredGrid.innerHTML = '';
+      
+      // Filtrer les articles avec plus de VIEW_THRESHOLD vues
+      const featuredArticles = articles.filter(article => article.views > VIEW_THRESHOLD);
+      
+      if (featuredArticles.length === 0) {
+        featuredGrid.innerHTML = `
+          <div class="no-results" style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+            <i class="fas fa-star" style="font-size: 3rem; margin-bottom: 20px;"></i>
+            <h3>Aucun article vedette pour le moment</h3>
+            <p>Les articles populaires apparaîtront ici lorsqu'ils auront atteint ${VIEW_THRESHOLD} vues</p>
+          </div>
+        `;
+        return;
+      }
+      
+      // Trier par popularité et prendre les 3 premiers
+      featuredArticles.sort((a, b) => b.views - a.views);
+      const topFeatured = featuredArticles.slice(0, 3);
+      
+      topFeatured.forEach(article => {
+        const featuredArticle = document.createElement('div');
+        featuredArticle.className = 'featured-article';
+        
+        // Déterminer le badge en fonction du rang
+        let badgeText = 'POPULAIRE';
+        if (article.views > 2500) badgeText = 'TENDANCE';
+        if (article.views > 5000) badgeText = 'EXCLUSIF';
+        
+        // Utiliser l'image de l'article ou une image par défaut
+        let imageUrl = article.imageUrl || getRandomArticleImage();
+        
+        featuredArticle.innerHTML = `
+          <div class="featured-badge">${badgeText}</div>
+          <div class="featured-image">
+            <img src="${imageUrl}" alt="${article.title}">
+          </div>
+          <div class="featured-content">
+            <div class="featured-category">${article.category}</div>
+            <h3 class="featured-article-title">${article.title}</h3>
+            <p>${article.content.substring(0, 100)}...</p>
+            
+            <div class="featured-stats">
+              <div class="stat-item"><i class="fas fa-eye"></i> ${article.views || 0} vues</div>
+              <div class="stat-item"><i class="fas fa-share-alt"></i> ${article.shares || 0} partages</div>
+              <div class="stat-item"><i class="far fa-clock"></i> ${Math.ceil(article.content.length / 500)} min</div>
+            </div>
+          </div>
+        `;
+        
+        // Ouvrir l'article au clic sur la carte
+        featuredArticle.addEventListener('click', () => {
+          openArticleModal(article);
+        });
+        
+        featuredGrid.appendChild(featuredArticle);
+      });
+    }
+
+    // Fonction pour ouvrir la modal d'article
+    function openArticleModal(article) {
+      // Mettre à jour les données de l'article
+      currentArticleId = article.id;
+      
+      // Formater la date
+      const date = new Date(article.timestamp);
+      const formattedDate = date.toLocaleDateString('fr-FR', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+      });
+      
+      // Utiliser l'image de l'article ou une image par défaut
+      articleModalImage.src = article.imageUrl || getRandomArticleImage();
+      articleModalImage.alt = article.title + ' - Coach Zakari Tabouala';
+      articleModalTitle.textContent = article.title;
+      articleModalCategory.textContent = article.category;
+      articleModalDate.textContent = formattedDate;
+      articleModalContent.innerHTML = `<p>${article.content.replace(/\n/g, '</p><p>')}</p>`;
+      
+      // Mettre à jour les statistiques
+      articleViews.textContent = `${article.views || 0} vues`;
+      articleShares.textContent = `${article.shares || 0} partages`;
+      
+      // Ouvrir la modal
+      articleModal.classList.add('visible');
+      document.body.style.overflow = 'hidden';
+      
+      // Mettre à jour le compteur de vues dans Firebase
+      articlesRef.child(article.id).transaction(currentData => {
+        if (currentData) {
+          currentData.views = (currentData.views || 0) + 1;
+        }
+        return currentData;
+      });
+    }
+
+    // Fonction pour afficher la liste des articles dans l'admin
+    function displayAdminArticlesList(articles) {
+      adminArticlesList.innerHTML = '';
+      
+      if (articles.length === 0) {
+        adminArticlesList.innerHTML = '<p style="text-align: center; opacity: 0.7;">Aucun article à afficher</p>';
+        return;
+      }
+      
+      articles.forEach(article => {
+        const articleItem = document.createElement('div');
+        articleItem.className = 'admin-article-item';
+        articleItem.style.cssText = `
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 12px;
+          margin-bottom: 10px;
+          background: rgba(255,255,255,0.05);
+          border-radius: 8px;
+          border: 1px solid rgba(255,255,255,0.1);
+        `;
+        
+        articleItem.innerHTML = `
+          <div>
+            <strong>${article.title}</strong>
+            <div style="font-size: 0.8rem; opacity: 0.7; margin-top: 5px;">
+              ${article.category} • ${new Date(article.timestamp).toLocaleDateString('fr-FR')}
+            </div>
+          </div>
+          <button class="delete-article-btn" data-id="${article.id}" style="
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+          ">
+            <i class="fas fa-trash"></i> Supprimer
+          </button>
+        `;
+        
+        adminArticlesList.appendChild(articleItem);
+      });
+      
+      // Ajouter les écouteurs d'événements pour les boutons de suppression
+      document.querySelectorAll('.delete-article-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const articleId = this.getAttribute('data-id');
+          deleteArticle(articleId);
+        });
+      });
+    }
+
+    // Fonction pour supprimer un article
+    function deleteArticle(articleId) {
+      if (confirm('Êtes-vous sûr de vouloir supprimer cet article ? Cette action est irréversible.')) {
+        articlesRef.child(articleId).remove()
+          .then(() => {
+            alert('Article supprimé avec succès !');
+            // Recharger la liste des articles dans l'admin
+            displayAdminArticlesList(allArticles);
+          })
+          .catch(error => {
+            console.error('Erreur lors de la suppression:', error);
+            alert('Erreur lors de la suppression de l\'article');
+          });
+      }
+    }
+
+    // Fonction pour filtrer les articles
+    function filterArticles(articles) {
+      const category = categoryFilter.value;
+      const sort = sortFilter.value;
+      const searchTerm = searchInput.value.toLowerCase();
+      
+      let filteredArticles = articles.filter(article => {
+        const categoryMatch = category === 'all' || article.category === category;
+        const searchMatch = article.title.toLowerCase().includes(searchTerm) || 
+                            article.content.toLowerCase().includes(searchTerm);
+        
+        return categoryMatch && searchMatch;
+      });
+      
+      // Trier les articles
+      switch (sort) {
+        case 'newest':
+          filteredArticles.sort((a, b) => b.timestamp - a.timestamp);
+          break;
+        case 'oldest':
+          filteredArticles.sort((a, b) => a.timestamp - b.timestamp);
+          break;
+        case 'popular':
+          filteredArticles.sort((a, b) => {
+            const viewsA = a.views || 0;
+            const viewsB = b.views || 0;
+            return viewsB - viewsA;
+          });
+          break;
+      }
+      
+      return filteredArticles;
+    }
+
+    // Fonction pour uploader une image sur Imgur
+    function uploadImageToImgur(file) {
+      return new Promise((resolve, reject) => {
+        imgurProgress.style.display = 'block';
+        imgurStatus.style.display = 'block';
+        imgurStatus.textContent = 'Téléchargement en cours...';
+        
+        const formData = new FormData();
+        formData.append('image', file);
+        
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', 'https://api.imgur.com/3/image', true);
+        xhr.setRequestHeader('Authorization', `Client-ID ${IMGUR_CLIENT_ID}`);
+        
+        xhr.upload.onprogress = function(e) {
+          if (e.lengthComputable) {
+            const percent = Math.round((e.loaded / e.total) * 100);
+            imgurProgressBar.style.width = percent + '%';
+          }
+        };
+        
+        xhr.onload = function() {
+          imgurProgress.style.display = 'none';
+          
+          if (xhr.status === 200) {
+            const response = JSON.parse(xhr.responseText);
+            if (response.success) {
+              imgurStatus.textContent = 'Image téléchargée avec succès!';
+              setTimeout(() => {
+                imgurStatus.style.display = 'none';
+              }, 3000);
+              resolve(response.data.link);
+            } else {
+              imgurStatus.textContent = 'Erreur lors du téléchargement: ' + response.data.error;
+              reject(response.data.error);
+            }
+          } else {
+            imgurStatus.textContent = 'Erreur lors du téléchargement: ' + xhr.statusText;
+            reject(xhr.statusText);
+          }
+        };
+        
+        xhr.onerror = function() {
+          imgurProgress.style.display = 'none';
+          imgurStatus.textContent = 'Erreur réseau lors du téléchargement';
+          reject('Erreur réseau');
+        };
+        
+        xhr.send(formData);
+      });
+    }
+
+    // Animation au défilement
+    function animateOnScroll() {
+      const elements = document.querySelectorAll('[data-animate]');
+      
+      elements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+        
+        if (elementTop < window.innerHeight - elementVisible) {
+          element.classList.add('animate');
+        }
+      });
+    }
+
+    // Gestion du défilement pour l'en-tête
+    function handleScroll() {
+      const currentScrollPosition = window.pageYOffset;
+      
+      if (currentScrollPosition > lastScrollPosition && currentScrollPosition > 100) {
+        mainHeader.classList.add('hidden');
+      } else {
+        mainHeader.classList.remove('hidden');
+      }
+      
+      lastScrollPosition = currentScrollPosition;
+      
+      // Bouton retour en haut
+      if (currentScrollPosition > 500) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+      
+      // Animation des éléments
+      animateOnScroll();
+    }
+
+    // Initialisation
+    document.addEventListener('DOMContentLoaded', () => {
+      // Charger les articles depuis Firebase
+      articlesGrid.innerHTML = '<div class="loading"><div class="spinner"></div></div>';
+      featuredGrid.innerHTML = '<div class="loading"><div class="spinner"></div></div>';
+      
+      articlesRef.on('value', (snapshot) => {
+        const articlesData = [];
+        snapshot.forEach(childSnapshot => {
+          articlesData.push({
+            id: childSnapshot.key,
+            ...childSnapshot.val()
+          });
+        });
+        
+        allArticles = articlesData;
+        
+        // Afficher tous les articles
+        displayArticles(filterArticles(allArticles));
+        
+        // Afficher les articles en vedette
+        displayFeaturedArticles(allArticles);
+        
+        // Afficher la liste des articles dans l'admin
+        displayAdminArticlesList(allArticles);
+        
+        // Gestionnaire d'événements pour les filtres
+        categoryFilter.addEventListener('change', () => displayArticles(filterArticles(allArticles)));
+        sortFilter.addEventListener('change', () => displayArticles(filterArticles(allArticles)));
+        searchInput.addEventListener('input', () => displayArticles(filterArticles(allArticles)));
+      }, (error) => {
+        console.error("Erreur de chargement des articles:", error);
+        articlesGrid.innerHTML = `
+          <div class="no-results" style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+            <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 20px;"></i>
+            <h3>Erreur de chargement des articles</h3>
+            <p>Veuillez réessayer plus tard</p>
+          </div>
+        `;
+      });
+      
+      // Admin modal
+      footerAdminBtn.addEventListener('click', () => {
+        adminModal.classList.add('visible');
+        document.body.style.overflow = 'hidden';
+        passwordSection.style.display = 'block';
+        articleFormSection.style.display = 'none';
+        adminPassword.value = '';
+      });
+      
+      closeModal.addEventListener('click', () => {
+        adminModal.classList.remove('visible');
+        document.body.style.overflow = 'auto';
+      });
+      
+      // Toggle password visibility
+      passwordToggle.addEventListener('click', () => {
+        if (adminPassword.type === 'password') {
+          adminPassword.type = 'text';
+          passwordToggle.innerHTML = '<i class="fas fa-eye-slash"></i>';
+        } else {
+          adminPassword.type = 'password';
+          passwordToggle.innerHTML = '<i class="fas fa-eye"></i>';
+        }
+      });
+      
+      // Authentification admin
+      loginBtn.addEventListener('click', () => {
+        const password = adminPassword.value;
+        if (password === 'zapson2025') {
+          passwordSection.style.display = 'none';
+          articleFormSection.style.display = 'block';
+        } else {
+          alert('Mot de passe admin incorrect');
+        }
+      });
+      
+      // Soumission du formulaire admin
+      articleForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const title = document.getElementById('article-title').value;
+        const content = document.getElementById('article-content').value;
+        const imageUrl = document.getElementById('article-image-url').value;
+        const category = document.getElementById('article-category').value;
+        const author = document.getElementById('article-author').value || 'Coach Zakari Tabouala';
+        
+        // Créer un nouvel article
+        const newArticle = {
+          title,
+          content,
+          category,
+          author,
+          imageUrl: imageUrl || '',
+          timestamp: Date.now(),
+          views: 0,
+          shares: 0
+        };
+        
+        // Ajouter à Firebase
+        const newArticleRef = articlesRef.push();
+        newArticleRef.set(newArticle)
+          .then(() => {
+            // Réinitialiser le formulaire
+            articleForm.reset();
+            
+            // Fermer le modal
+            adminModal.classList.remove('visible');
+            document.body.style.overflow = 'auto';
+            
+            alert('Article ajouté avec succès!');
+          })
+          .catch(error => {
+            console.error("Erreur d'ajout d'article:", error);
+            alert('Erreur lors de l\'ajout de l\'article. Veuillez réessayer.');
+          });
+      });
+      
+      // Fermer la modal d'article
+      closeArticle.addEventListener('click', () => {
+        articleModal.classList.remove('visible');
+        document.body.style.overflow = 'auto';
+      });
+      
+      // Lire l'article suivant
+      readNextBtn.addEventListener('click', () => {
+        const filteredArticles = filterArticles(allArticles);
+        const currentIndex = filteredArticles.findIndex(a => a.id === currentArticleId);
+        
+        if (filteredArticles.length > 1) {
+          let nextIndex = (currentIndex + 1) % filteredArticles.length;
+          openArticleModal(filteredArticles[nextIndex]);
+        }
+      });
+      
+      // Menu mobile
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+      });
+
+      // Fermer le menu au clic sur un lien
+      document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+          hamburger.classList.remove('active');
+          navMenu.classList.remove('active');
+        });
+      });
+      
+      // Bouton retour en haut
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+      
+      // Upload d'image sur Imgur
+      imgurUpload.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+        
+        // Vérifier le type de fichier
+        const validTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+        if (!validTypes.includes(file.type)) {
+          imgurStatus.style.display = 'block';
+          imgurStatus.textContent = 'Format non supporté. Utilisez JPG, JPEG ou PNG.';
+          return;
+        }
+        
+        // Vérifier la taille du fichier (max 10MB)
+        if (file.size > 10 * 1024 * 1024) {
+          imgurStatus.style.display = 'block';
+          imgurStatus.textContent = 'Fichier trop volumineux (max 10MB)';
+          return;
+        }
+        
+        uploadImageToImgur(file)
+          .then(imageUrl => {
+            document.getElementById('article-image-url').value = imageUrl;
+          })
+          .catch(error => {
+            console.error('Erreur Imgur:', error);
+          });
+      });
+      
+      // Animation au défilement
+      window.addEventListener('scroll', handleScroll);
+      // Initialiser les animations
+      animateOnScroll();
+    });
+  </script>
+</body>
+</html>

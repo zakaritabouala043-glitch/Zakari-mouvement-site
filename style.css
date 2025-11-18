@@ -1,0 +1,210 @@
+/* BASE */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #0c0f26;
+  color: #f5f5f5;
+  overflow-x: hidden;
+  line-height: 1.7;
+  position: relative;
+  scroll-snap-type: y mandatory;
+}
+
+/* FOND ANIMÉ AURORA */
+body::before {
+  content: "";
+  position: fixed;
+  top: -30%;
+  left: -30%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 50% 50%, #00f0ff33 0%, #0077ff00 60%),
+              radial-gradient(circle at 20% 80%, #ff00f055 0%, #ff007700 60%),
+              radial-gradient(circle at 80% 20%, #ffff0055 0%, #ffcc0000 60%);
+  mix-blend-mode: screen;
+  animation: aurora 60s infinite linear alternate;
+  z-index: -1;
+  filter: blur(50px);
+  pointer-events: none;
+}
+@keyframes aurora {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(-20%, -10%) rotate(360deg); }
+}
+
+/* HEADER FLUIDE */
+.header {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+  padding: 25px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.6);
+}
+
+/* NAVIGATION */
+.nav-list {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+.nav-list li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  position: relative;
+  font-size: 1.1rem;
+  transition: 0.4s;
+}
+.nav-list li a::before {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #00eaff;
+  transition: width 0.3s ease;
+}
+.nav-list li a:hover::before,
+.nav-list li a.active::before {
+  width: 100%;
+}
+.nav-list li a:hover,
+.nav-list li a.active {
+  color: #ffc107;
+}
+
+/* TITRES MAGIQUES */
+h1, h2, h3 {
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+}
+h1 {
+  font-size: 3rem;
+  text-align: center;
+  background: linear-gradient(to right, #fff, #ffc107, #00eaff);
+  background-size: 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shine 6s linear infinite;
+}
+@keyframes shine {
+  0% { background-position: 0% center; }
+  100% { background-position: 300% center; }
+}
+
+h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 70px;
+  color: #fff;
+}
+
+/* SECTIONS avec scroll snapping */
+section {
+  padding: 100px 20px;
+  max-width: 1200px;
+  margin: auto;
+  scroll-snap-align: start;
+  opacity: 0;
+  transform: translateY(50px);
+  animation: fadeUp 1s ease-out forwards;
+}
+section:nth-of-type(even) {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 30px;
+  backdrop-filter: blur(20px);
+  padding: 120px 30px;
+}
+
+/* Apparition animée avec délai progressif */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* TIMELINE SURFUTURISTE */
+.timeline-container {
+  display: grid;
+  gap: 40px;
+  margin-top: 50px;
+}
+.timeline-item {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border-left: 6px solid #ffc107;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  transform: rotateY(0);
+  transition: transform 0.6s ease;
+}
+.timeline-item:hover {
+  transform: rotateY(4deg);
+}
+
+/* CITATION DIVINE */
+.citation blockquote {
+  font-size: 1.6rem;
+  color: #fff;
+  background: linear-gradient(145deg, #1a1a1a, #222);
+  padding: 40px;
+  border-left: 6px solid #ffbb00;
+  border-radius: 12px;
+  text-align: center;
+  font-style: italic;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  max-width: 800px;
+  margin: 60px auto;
+}
+
+/* PLACEHOLDER MAGNIFIÉ */
+.placeholder {
+  background: rgba(255,255,255,0.05);
+  padding: 50px;
+  border-radius: 20px;
+  text-align: center;
+  color: #aaa;
+  font-style: italic;
+  margin-top: 40px;
+  border: 2px dashed #00eaff;
+}
+
+/* FOOTER */
+.footer {
+  background: #0a0a0a;
+  color: #ddd;
+  text-align: center;
+  padding: 40px;
+  font-size: 1rem;
+  margin-top: 100px;
+  border-top: 2px solid #111;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.4rem; }
+  .nav-list {
+    flex-direction: column;
+    gap: 20px;
+  }
+  section {
+    padding: 60px 20px;
+  }
+}

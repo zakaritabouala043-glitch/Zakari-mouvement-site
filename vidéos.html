@@ -1,0 +1,2273 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Vidéos Inspirantes - Coach Zakari Tabouala</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Découvrez les vidéos inspirantes de Coach Zakari Tabouala sur le développement personnel, le leadership et la transformation.">
+  <meta name="keywords" content="coach zakari, développement personnel, leadership, motivation, transformation, vidéos inspirantes, MCT">
+  <meta name="author" content="Coach Zakari Tabouala">
+  <meta name="robots" content="index, follow">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;500;600;700&display=swap">
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+  <style>
+    /* BASE */
+    :root {
+      --primary: #001f3f;
+      --secondary: #0074D9;
+      --accent: gold;
+      --text-dark: #0c0f26;
+      --text-light: #f5f5f5;
+      --bg-dark: #0c0f26;
+      --filter-label: #5dade2;
+      --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      --glow: 0 0 15px rgba(93, 173, 226, 0.6);
+      --success: #28a745;
+      --error: #dc3545;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+    
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-light);
+      overflow-x: hidden;
+      line-height: 1.7;
+      position: relative;
+    }
+    
+    h1, h2, h3, h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+    }
+    
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.3s ease;
+    }
+    
+    button {
+      cursor: pointer;
+      border: none;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+    
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .section {
+      padding: 100px 0;
+    }
+    
+    .section-title {
+      font-size: 2.8rem;
+      text-align: center;
+      margin-bottom: 60px;
+      position: relative;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      animation: pulseGlow 3s infinite alternate;
+    }
+    
+    @keyframes pulseGlow {
+      0% {
+        text-shadow: 0 0 5px var(--accent);
+      }
+      100% {
+        text-shadow: 0 0 20px var(--accent), 0 0 30px rgba(255, 215, 0, 0.5);
+      }
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    
+    /* HEADER ET NAVIGATION */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 15px 0;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--accent);
+      z-index: 1001;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    }
+    
+    .logo img {
+      height: 50px;
+      width: auto;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+      animation: spinGlow 10s linear infinite;
+    }
+    
+    @keyframes spinGlow {
+      0% {
+        transform: rotate(0deg);
+        box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+      }
+      50% {
+        box-shadow: 0 0 20px var(--accent), 0 0 30px rgba(255, 215, 0, 0.6);
+      }
+      100% {
+        transform: rotate(360deg);
+        box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+      }
+    }
+    
+    /* Menu Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 35px;
+      height: 30px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 1001;
+      position: relative;
+    }
+    
+    .hamburger span {
+      display: block;
+      height: 3px;
+      width: 100%;
+      background-color: var(--accent);
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+    
+    /* Menu de navigation */
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .nav-menu li {
+      margin: 0 12px;
+    }
+    
+    .nav-menu li a {
+      position: relative;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 5px 0;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+    
+    .nav-menu li a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-menu li a:hover::after,
+    .nav-menu li a.active::after {
+      width: 100%;
+    }
+    
+    .nav-menu li a:hover,
+    .nav-menu li a.active {
+      color: var(--accent);
+    }
+    
+    /* SECTION VIDÉOS */
+    .videos-section {
+      padding: 160px 0 100px;
+      background: linear-gradient(to bottom, #0c0f26, #1a2a6c);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .videos-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/diagmonds.png');
+      opacity: 0.1;
+    }
+    
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.4rem;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 60px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    /* FILTRES ET RECHERCHE */
+    .video-filters {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 40px;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .filter-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 10px 15px;
+      border-radius: 50px;
+      box-shadow: var(--glow);
+    }
+    
+    .filter-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--filter-label);
+      text-shadow: 0 0 5px rgba(93, 173, 226, 0.5);
+    }
+    
+    .filter-select {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      padding: 8px 15px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .filter-select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(255,215,0,0.3);
+      outline: none;
+    }
+    
+    .search-bar {
+      display: flex;
+      max-width: 400px;
+      width: 100%;
+      box-shadow: var(--glow);
+      border-radius: 30px;
+      overflow: hidden;
+    }
+    
+    .search-input {
+      flex-grow: 1;
+      padding: 12px 20px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(0, 0, 0, 0.3);
+      color: #fff;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .search-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(255,215,0,0.3);
+      outline: none;
+    }
+    
+    .search-btn {
+      background: var(--accent);
+      color: #000;
+      padding: 0 25px;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .search-btn:hover {
+      background: #fff;
+      color: var(--secondary);
+    }
+    
+    /* BOUTON ADMIN FLOTTANT - Masqué par défaut */
+    .admin-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 100;
+      transition: all 0.4s ease;
+      font-size: 1.3rem;
+      box-shadow: var(--glow);
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    
+    .admin-btn.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .admin-btn:hover {
+      background: rgba(255, 215, 0, 0.2);
+      transform: scale(1.1);
+    }
+    
+    /* ADMIN MODAL */
+    .admin-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+    
+    .admin-modal.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    
+    .admin-form {
+      background: var(--bg-dark);
+      border: 2px solid var(--accent);
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 90%;
+      width: 1000px;
+      position: relative;
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    
+    .close-modal {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.8rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .close-modal:hover {
+      color: var(--accent);
+      transform: rotate(90deg);
+    }
+    
+    .admin-form h3 {
+      font-size: 1.8rem;
+      margin-bottom: 25px;
+      color: var(--accent);
+      text-align: center;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: var(--filter-label);
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.3);
+      color: #fff;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(255,215,0,0.3);
+      outline: none;
+    }
+    
+    .form-group textarea {
+      height: 120px;
+      resize: vertical;
+    }
+    
+    .password-group {
+      position: relative;
+    }
+    
+    .password-toggle {
+      position: absolute;
+      right: 15px;
+      top: 40px;
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.6);
+      cursor: pointer;
+    }
+    
+    .submit-btn {
+      background: var(--accent);
+      color: #000;
+      padding: 14px 30px;
+      border: none;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: block;
+      margin: 30px auto 0;
+      width: 100%;
+      max-width: 300px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .submit-btn:hover {
+      background: #fff;
+      color: var(--secondary);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    }
+    
+    .submit-btn::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: rgba(255, 255, 255, 0.1);
+      transform: rotate(30deg);
+      transition: all 0.6s ease;
+    }
+    
+    .submit-btn:hover::after {
+      transform: rotate(30deg) translate(100%, 100%);
+    }
+    
+    /* GRID DE VIDÉOS */
+    .videos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+    
+    .video-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transform: translateY(30px);
+      opacity: 0;
+      box-shadow: var(--card-shadow);
+      position: relative;
+    }
+    
+    .video-card.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .video-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), var(--glow);
+      border-color: var(--accent);
+    }
+    
+    .video-thumbnail {
+      position: relative;
+      padding-top: 56.25%;
+      overflow: hidden;
+    }
+    
+    .video-thumbnail img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .video-card:hover .video-thumbnail img {
+      transform: scale(1.05);
+    }
+    
+    .play-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      color: var(--accent);
+      opacity: 0.8;
+      transition: all 0.3s ease;
+    }
+    
+    .video-card:hover .play-icon {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+    
+    .video-info {
+      padding: 20px;
+    }
+    
+    .video-category {
+      display: inline-block;
+      background: rgba(255, 215, 0, 0.15);
+      color: var(--accent);
+      padding: 5px 15px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    
+    .video-title {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      line-height: 1.4;
+      min-height: 65px;
+    }
+    
+    .video-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    
+    .video-platform {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    .platform-icon {
+      color: var(--accent);
+    }
+    
+    .video-actions {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .action-btn {
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.7);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1.1rem;
+    }
+    
+    .action-btn:hover {
+      color: var(--accent);
+      transform: translateY(-3px);
+    }
+    
+    /* SECTION RESSOURCES */
+    .resources-section {
+      padding: 100px 0;
+      background: linear-gradient(to bottom, #1a2a6c, #0c0f26);
+      position: relative;
+    }
+    
+    .resources-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/cartographer.png');
+      opacity: 0.1;
+    }
+    
+    .resources-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+    }
+    
+    .resource-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 40px 30px;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transform: translateY(30px);
+      opacity: 0;
+      box-shadow: var(--card-shadow);
+    }
+    
+    .resource-card.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .resource-card:hover {
+      transform: translateY(-10px);
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), var(--glow);
+    }
+    
+    .resource-icon {
+      width: 80px;
+      height: 80px;
+      background: rgba(255, 215, 0, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 25px;
+      font-size: 2.2rem;
+      color: var(--accent);
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4);
+      }
+      70% {
+        box-shadow: 0 0 0 15px rgba(255, 215, 0, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
+      }
+    }
+    
+    .resource-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: var(--accent);
+    }
+    
+    .resource-card p {
+      margin-bottom: 25px;
+      opacity: 0.9;
+    }
+    
+    .resource-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .resource-btn:hover {
+      background: #fff;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+    
+    .resource-btn::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: rgba(255, 255, 255, 0.1);
+      transform: rotate(30deg);
+      transition: all 0.6s ease;
+    }
+    
+    .resource-btn:hover::after {
+      transform: rotate(30deg) translate(100%, 100%);
+    }
+    
+    /* FOOTER */
+    .footer {
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: #fff;
+      padding: 80px 0 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .footer::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/black-linen.png');
+      opacity: 0.1;
+      pointer-events: none;
+    }
+    
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      gap: 40px;
+    }
+    
+    .footer-logo {
+      flex: 1;
+      min-width: 300px;
+      margin-bottom: 30px;
+    }
+    
+    .footer-logo img {
+      height: 70px;
+      margin-bottom: 25px;
+      border-radius: 50%;
+      border: 3px solid var(--accent);
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
+    }
+    
+    .footer-logo p {
+      max-width: 350px;
+      line-height: 1.8;
+      font-size: 1.1rem;
+    }
+    
+    .footer-links {
+      flex: 1;
+      min-width: 200px;
+      margin-bottom: 30px;
+    }
+    
+    .footer-links h3 {
+      font-size: 1.6rem;
+      margin-bottom: 25px;
+      color: var(--accent);
+      position: relative;
+      padding-bottom: 12px;
+    }
+    
+    .footer-links h3::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    
+    .footer-links ul {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 15px;
+    }
+    
+    .footer-links a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.3s ease;
+      font-size: 1.1rem;
+    }
+    
+    .footer-links a:hover {
+      color: var(--accent);
+      transform: translateX(8px);
+    }
+    
+    .footer-contact {
+      flex: 1;
+      min-width: 300px;
+      margin-bottom: 30px;
+    }
+    
+    .footer-contact h3 {
+      font-size: 1.6rem;
+      margin-bottom: 25px;
+      color: var(--accent);
+      position: relative;
+      padding-bottom: 12px;
+    }
+    
+    .footer-contact h3::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    
+    .contact-icon {
+      width: 45px;
+      height: 45px;
+      background: rgba(255, 215, 0, 0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 25px;
+      flex-wrap: wrap;
+    }
+    
+    .social-links a {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      transition: all 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      background: var(--accent);
+      color: var(--primary);
+      transform: translateY(-8px);
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding-top: 50px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      margin-top: 50px;
+      font-size: 1.1rem;
+      opacity: 0.8;
+    }
+    
+    /* Chargement */
+    .loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      grid-column: 1 / -1;
+    }
+    
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid rgba(255, 215, 0, 0.3);
+      border-top: 5px solid var(--accent);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* Bouton retour en haut */
+    .back-to-top {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background: var(--accent);
+      color: #000;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 99;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.4s ease;
+      font-size: 1.3rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+    
+    .back-to-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .back-to-top:hover {
+      background: #fff;
+      transform: translateY(-5px);
+    }
+    
+    /* MODAL DE CONFIRMATION PASSWORD */
+    .password-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1001;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+    
+    .password-modal.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    
+    .password-form {
+      background: var(--bg-dark);
+      border: 2px solid var(--accent);
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 400px;
+      width: 90%;
+      position: relative;
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+      text-align: center;
+    }
+    
+    .password-form h3 {
+      font-size: 1.8rem;
+      margin-bottom: 25px;
+      color: var(--accent);
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+    }
+    
+    .password-form p {
+      margin-bottom: 20px;
+      opacity: 0.8;
+    }
+    
+    /* Styles pour l'upload d'image */
+    .thumbnail-upload {
+      border: 2px dashed rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 15px;
+      transition: all 0.3s ease;
+    }
+    
+    .thumbnail-upload:hover {
+      border-color: var(--accent);
+    }
+    
+    .thumbnail-upload.dragover {
+      border-color: var(--accent);
+      background: rgba(255, 215, 0, 0.05);
+    }
+    
+    .upload-icon {
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    
+    .upload-text {
+      margin-bottom: 15px;
+    }
+    
+    .upload-btn {
+      background: var(--secondary);
+      color: white;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+    
+    .upload-btn:hover {
+      background: var(--primary);
+    }
+    
+    .upload-preview {
+      margin-top: 15px;
+      display: none;
+    }
+    
+    .upload-preview img {
+      max-height: 150px;
+      border-radius: 5px;
+      margin: 0 auto;
+    }
+    
+    .upload-progress {
+      width: 100%;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 5px;
+      margin-top: 10px;
+      overflow: hidden;
+      display: none;
+    }
+    
+    .upload-progress-bar {
+      height: 100%;
+      background: var(--accent);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+    
+    /* Styles pour les boutons de suppression */
+    .delete-btn {
+      background: var(--error);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 0.8rem;
+      margin-top: 10px;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+    
+    .delete-btn:hover {
+      background: #c82333;
+      transform: translateY(-2px);
+    }
+    
+    /* Styles pour l'onglet d'administration */
+    .admin-tabs {
+      display: flex;
+      margin-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .admin-tab {
+      padding: 10px 20px;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.7);
+      border: none;
+      border-bottom: 3px solid transparent;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .admin-tab.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+    
+    .admin-tab:hover {
+      color: var(--accent);
+    }
+    
+    .admin-tab-content {
+      display: none;
+    }
+    
+    .admin-tab-content.active {
+      display: block;
+    }
+    
+    .existing-videos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      max-height: 400px;
+      overflow-y: auto;
+      padding: 10px;
+      margin-top: 20px;
+    }
+    
+    .existing-video-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      padding: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .existing-video-card h4 {
+      font-size: 1rem;
+      margin-bottom: 10px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    
+    .existing-video-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      opacity: 0.7;
+      margin-bottom: 10px;
+    }
+    
+    .existing-video-actions {
+      display: flex;
+      justify-content: flex-end;
+    }
+    
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 1200px) {
+      .section-title {
+        font-size: 2.5rem;
+      }
+    }
+    
+    @media (max-width: 992px) {
+      .videos-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      }
+      
+      .video-filters {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .filter-group {
+        width: 100%;
+      }
+      
+      .footer-logo img {
+        height: 60px;
+      }
+      
+      .admin-form {
+        max-width: 95%;
+        width: 95%;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .section-title {
+        font-size: 2.3rem;
+      }
+      
+      .section-subtitle {
+        font-size: 1.2rem;
+      }
+      
+      /* Menu Hamburger */
+      .hamburger {
+        display: flex;
+      }
+      
+      .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 70%;
+        max-width: 300px;
+        background: rgba(0, 0, 0, 0.95);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: right 0.4s ease;
+        padding-top: 100px;
+      }
+      
+      .nav-menu.active {
+        right: 0;
+      }
+      
+      .nav-menu li {
+        margin: 25px 0;
+        margin-left: 0;
+      }
+      
+      .section {
+        padding: 80px 0;
+      }
+      
+      .footer-logo img {
+        height: 55px;
+      }
+      
+      .admin-form {
+        padding: 20px;
+      }
+      
+      .existing-videos-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .videos-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-logo img {
+        height: 50px;
+      }
+      
+      .filter-group {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .admin-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+      }
+      
+      .admin-tabs {
+        flex-direction: column;
+      }
+      
+      .admin-tab {
+        text-align: center;
+        border-bottom: none;
+        border-left: 3px solid transparent;
+      }
+      
+      .admin-tab.active {
+        border-left-color: var(--accent);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container nav-container">
+      <div class="logo-container">
+        <a href="#" class="logo">
+          <img src="images/logo.png" alt="Logo Coach Zakari">
+          Coach Zakari
+        </a>
+      </div>
+      
+      <button class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <!-- Menu de navigation -->
+      <ul class="nav-menu">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="temoignages.html">Témoignages</a></li>
+        <li><a href="vidéos.html" class="active">Vidéos</a></li>
+        <li><a href="formations.html">Formations</a></li>
+        <li><a href="articles.html">Articles</a></li>
+        <li><a href="livres.html">Livres</a></li>
+        <li><a href="a-propos.html">À-propos</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- SECTION VIDÉOS -->
+  <section class="videos-section section">
+    <div class="container">
+      <h1 class="section-title">📺 Vidéos Inspirantes</h1>
+      <p class="section-subtitle">Découvrez les enseignements, conférences et contenus exclusifs de Coach Zakari Tabouala pour transformer votre vie et votre leadership</p>
+            
+      <!-- Barre de filtres et recherche -->
+      <div class="video-filters">
+        <div class="filter-group">
+          <span class="filter-label">Catégorie:</span>
+          <select class="filter-select" id="category-filter">
+            <option value="all">Toutes les catégories</option>
+            <option value="Développement personnel">Développement personnel</option>
+            <option value="Coaching de leaders">Coaching de leaders</option>
+            <option value="Formations & Académie">Formations & Académie</option>
+            <option value="Conférences & Talks">Conférences & Talks</option>
+            <option value="Foi et transformation spirituelle">Foi et transformation spirituelle</option>
+            <option value="Leadership transformationnel">Leadership transformationnel</option>
+            <option value="Orientation de vie & Mission">Orientation de vie & Mission</option>
+            <option value="Livres & enseignements">Livres & enseignements</option>
+            <option value="Impact communautaire">Impact communautaire</option>
+            <option value="Vision MCT">Vision MCT</option>
+            <option value="PRODUITS de santé">PRODUITS de santé</option>
+          </select>
+        </div>
+        
+        <div class="filter-group">
+          <span class="filter-label">Plateforme:</span>
+          <select class="filter-select" id="platform-filter">
+            <option value="all">Toutes les plateformes</option>
+            <option value="YouTube">YouTube</option>
+            <option value="TikTok">TikTok</option>
+            <option value="Instagram">Instagram</option>
+            <option value="Facebook">Facebook</option>
+            <option value="Vimeo">Vimeo</option>
+            <option value="Autre">Autre</option>
+          </select>
+        </div>
+        
+        <div class="search-bar">
+          <input type="text" class="search-input" id="search-input" placeholder="Rechercher des vidéos...">
+          <button class="search-btn"><i class="fas fa-search"></i></button>
+        </div>
+      </div>
+      
+      <!-- Grille de vidéos -->
+      <div class="videos-grid" id="videos-grid">
+        <div class="loading">
+          <div class="spinner"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION RESSOURCES -->
+  <section class="resources-section section">
+    <div class="container resources-container">
+      <h2 class="section-title">📚 Ressources Complémentaires</h2>
+      <p class="section-subtitle">Approfondissez votre transformation avec ces ressources gratuites</p>
+      
+      <div class="resources-grid">
+        <div class="resource-card">
+          <div class="resource-icon">
+            <i class="fas fa-book"></i>
+          </div>
+          <h3>Ebooks Gratuits</h3>
+          <p>Téléchargez nos guides exclusifs sur le leadership, la motivation et la transformation personnelle.</p>
+          <a href="livres.html" class="resource-btn">Télécharger</a>
+        </div>
+        
+        <div class="resource-card">
+          <div class="resource-icon">
+            <i class="fas fa-headphones"></i>
+          </div>
+          <h3>Formations Vidéo</h3>
+          <p>Accédez à nos formations vidéo gratuites pour développer votre potentiel de leader.</p>
+          <a href="formations.html" class="resource-btn">Voir les formations</a>
+        </div>
+        
+        <div class="resource-card">
+          <div class="resource-icon">
+            <i class="fas fa-calendar-check"></i>
+          </div>
+          <h3>Vidéos Exclusives</h3>
+          <p>Découvrez nos contenus vidéo exclusifs pour approfondir votre transformation personnelle.</p>
+          <a href="vidéos.html" class="resource-btn">Voir les vidéos</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="images/logo.png" alt="Logo Coach Zakari">
+          <h3>Coach Zakari Tabouala</h3>
+          <p>Formateur des leaders, voix pour les nations. Rejoignez le mouvement MCT "Motivation, Compassion et transformation" pour une transformation personnelle et collective.</p>
+        </div>
+        
+        <div class="footer-links">
+          <h3>Liens Rapides</h3>
+          <ul>
+            <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+            <li><a href="vision.html"><i class="fas fa-eye"></i> Vision</a></li>
+            <li><a href="adhesion.html"><i class="fas fa-globe"></i> Adhésion</a></li>
+            <li><a href="temoignages.html"><i class="fas fa-comments"></i> Témoignages</a></li>
+            <li><a href="formations.html"><i class="fas fa-graduation-cap"></i> Formations</a></li>
+            <li><a href="livres.html"><i class="fas fa-book"></i> Livres</a></li>
+            <li><a href="vidéos.html"><i class="fas fa-video"></i> Vidéos</a></li>
+            <li><a href="a-propos.html"><i class="fas fa-user-circle"></i> À-propos</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-contact">
+          <h3>Contact</h3>
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div>Yaoundé, Cameroun</div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div>+237 620 544 924</div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>contact@coachzakari.com</div>
+            </div>
+          </div>
+          
+          <div class="social-links">
+            <a href="https://facebook.com/CoachZakariTabouala" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/CoachZakari" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com/coachzakaritabouala" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://youtube.com/coachzakaritabouala" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://wa.me/237620544924" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://tiktok.com/@Coachzakaritabouala" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://linkedin.com/in/Coachzakaritabouala" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2023 Coach Zakari Tabouala. Tous droits réservés. | <a href="#">Confidentialité</a> | <a href="#">Conditions d'utilisation</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BOUTON ADMIN FLOTTANT -->
+  <button class="admin-btn" id="admin-btn">
+    <i class="fas fa-lock"></i>
+  </button>
+
+  <!-- MODAL PASSWORD ADMIN -->
+  <div class="password-modal" id="password-modal">
+    <div class="password-form">
+      <h3>Accès Administrateur</h3>
+      <p>Veuillez entrer le mot de passe pour accéder au panneau d'administration</p>
+      
+      <form id="password-form">
+        <div class="form-group password-group">
+          <label for="access-password">Mot de passe</label>
+          <input type="password" id="access-password" required>
+          <button type="button" class="password-toggle" id="access-password-toggle">
+            <i class="fas fa-eye"></i>
+          </button>
+        </div>
+        
+        <button type="submit" class="submit-btn">Accéder</button>
+        <button type="button" class="submit-btn" id="cancel-password" style="background: var(--secondary); margin-top: 10px;">Annuler</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL ADMIN -->
+  <div class="admin-modal" id="admin-modal">
+    <div class="admin-form">
+      <button class="close-modal" id="close-modal">
+        <i class="fas fa-times"></i>
+      </button>
+      
+      <div class="admin-tabs">
+        <button class="admin-tab active" data-tab="add-video">Ajouter une vidéo</button>
+        <button class="admin-tab" data-tab="manage-videos">Gérer les vidéos</button>
+      </div>
+      
+      <!-- Onglet Ajouter une vidéo -->
+      <div class="admin-tab-content active" id="add-video-tab">
+        <h3>Ajouter une nouvelle vidéo</h3>
+        
+        <form id="video-form">
+          <div class="form-group">
+            <label for="video-title">Titre de la vidéo</label>
+            <input type="text" id="video-title" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="video-url">Lien de la vidéo</label>
+            <input type="url" id="video-url" placeholder="https://www.youtube.com/watch?v=..." required>
+          </div>
+          
+          <!-- Section d'upload d'image -->
+          <div class="form-group">
+            <label>Miniature de la vidéo (optionnel)</label>
+            <div class="thumbnail-upload" id="thumbnail-upload">
+              <div class="upload-icon">
+                <i class="fas fa-cloud-upload-alt"></i>
+              </div>
+              <div class="upload-text">
+                <p>Glissez-déposez une image ici ou</p>
+              </div>
+              <label for="thumbnail-file" class="upload-btn">Choisir un fichier</label>
+              <input type="file" id="thumbnail-file" accept="image/*" style="display: none;">
+              <div class="upload-preview" id="upload-preview">
+                <img id="preview-image" src="" alt="Aperçu">
+              </div>
+              <div class="upload-progress" id="upload-progress">
+                <div class="upload-progress-bar" id="upload-progress-bar"></div>
+              </div>
+            </div>
+            <input type="hidden" id="video-thumbnail">
+          </div>
+          
+          <div class="form-group">
+            <label for="video-category">Catégorie</label>
+            <select id="video-category" required>
+              <option value="">Choisis une catégorie</option>
+              <option value="Développement personnel">Développement personnel</option>
+              <option value="Coaching de leaders">Coaching de leaders</option>
+              <option value="Formations & Académie">Formations & Académie</option>
+              <option value="Conférences & Talks">Conférences & Talks</option>
+              <option value="Foi et transformation spirituelle">Foi et transformation spirituelle</option>
+              <option value="Leadership transformationnel">Leadership transformationnel</option>
+              <option value="Orientation de vie & Mission">Orientation de vie & Mission</option>
+              <option value="Livres & enseignements">Livres & enseignements</option>
+              <option value="Impact communautaire">Impact communautaire</option>
+              <option value="Vision MCT">Vision MCT</option>
+              <option value="PRODUITS de santé">PRODUITS de santé</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="video-description">Description (optionnel)</label>
+            <textarea id="video-description"></textarea>
+          </div>
+          
+          <div class="form-group password-group">
+            <label for="admin-password">Mot de passe admin</label>
+            <input type="password" id="admin-password" required>
+            <button type="button" class="password-toggle" id="password-toggle">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+          
+          <button type="submit" class="submit-btn">Publier la vidéo</button>
+        </form>
+      </div>
+      
+      <!-- Onglet Gérer les vidéos -->
+      <div class="admin-tab-content" id="manage-videos-tab">
+        <h3>Gérer les vidéos existantes</h3>
+        <p>Voici la liste de toutes les vidéos. Vous pouvez les supprimer individuellement.</p>
+        
+        <div class="existing-videos-grid" id="existing-videos-grid">
+          <div class="loading">
+            <div class="spinner"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bouton retour en haut -->
+  <button class="back-to-top" id="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script>
+    // Configuration Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyBAs1GzpdwMoWFW_gKK5YfCGr4xYSp6MC0",
+      authDomain: "coach-zakari-mouvement.firebaseapp.com",
+      databaseURL: "https://coach-zakari-mouvement-default-rtdb.firebaseio.com",
+      projectId: "coach-zakari-mouvement",
+      storageBucket: "coach-zakari-mouvement.firebasestorage.app",
+      messagingSenderId: "209294826429",
+      appId: "1:209294826429:web:65860210e37c0c152310d4"
+    };
+
+    // Initialiser Firebase
+    firebase.initializeApp(firebaseConfig);
+    const database = firebase.database();
+    const videosRef = database.ref('videos');
+
+    // ID client Imgur
+    const IMGUR_CLIENT_ID = "7504d0c95b08dbe";
+
+    // Éléments DOM
+    const videosGrid = document.getElementById('videos-grid');
+    const adminBtn = document.getElementById('admin-btn');
+    const adminModal = document.getElementById('admin-modal');
+    const passwordModal = document.getElementById('password-modal');
+    const closeModal = document.getElementById('close-modal');
+    const videoForm = document.getElementById('video-form');
+    const passwordForm = document.getElementById('password-form');
+    const passwordToggle = document.getElementById('password-toggle');
+    const accessPasswordToggle = document.getElementById('access-password-toggle');
+    const adminPassword = document.getElementById('admin-password');
+    const accessPassword = document.getElementById('access-password');
+    const categoryFilter = document.getElementById('category-filter');
+    const platformFilter = document.getElementById('platform-filter');
+    const searchInput = document.getElementById('search-input');
+    const backToTop = document.getElementById('back-to-top');
+    const cancelPassword = document.getElementById('cancel-password');
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+
+    // Éléments pour l'upload d'image
+    const thumbnailUpload = document.getElementById('thumbnail-upload');
+    const thumbnailFile = document.getElementById('thumbnail-file');
+    const uploadPreview = document.getElementById('upload-preview');
+    const previewImage = document.getElementById('preview-image');
+    const uploadProgress = document.getElementById('upload-progress');
+    const uploadProgressBar = document.getElementById('upload-progress-bar');
+    const videoThumbnail = document.getElementById('video-thumbnail');
+
+    // Éléments pour l'administration
+    const adminTabs = document.querySelectorAll('.admin-tab');
+    const adminTabContents = document.querySelectorAll('.admin-tab-content');
+    const existingVideosGrid = document.getElementById('existing-videos-grid');
+
+    // Variables globales
+    let currentVideos = [];
+    const ADMIN_PASSWORD = "zapson2025"; // Mot de passe sécurisé
+
+    // Fonction pour détecter la plateforme
+    function detectPlatform(url) {
+      if (url.includes('youtube.com') || url.includes('youtu.be')) return 'YouTube';
+      if (url.includes('tiktok.com')) return 'TikTok';
+      if (url.includes('instagram.com')) return 'Instagram';
+      if (url.includes('facebook.com') || url.includes('fb.watch')) return 'Facebook';
+      if (url.includes('vimeo.com')) return 'Vimeo';
+      return 'Autre';
+    }
+
+    // Fonction pour uploader une image sur Imgur
+    async function uploadImageToImgur(file) {
+      return new Promise((resolve, reject) => {
+        const formData = new FormData();
+        formData.append('image', file);
+        
+        const xhr = new XMLHttpRequest();
+        
+        xhr.upload.addEventListener('progress', (e) => {
+          if (e.lengthComputable) {
+            const percentComplete = (e.loaded / e.total) * 100;
+            uploadProgressBar.style.width = percentComplete + '%';
+          }
+        });
+        
+        xhr.addEventListener('load', () => {
+          if (xhr.status === 200) {
+            const response = JSON.parse(xhr.responseText);
+            if (response.success) {
+              resolve(response.data.link);
+            } else {
+              reject(new Error('Échec de l\'upload sur Imgur'));
+            }
+          } else {
+            reject(new Error('Erreur lors de l\'upload'));
+          }
+        });
+        
+        xhr.addEventListener('error', () => {
+          reject(new Error('Erreur réseau lors de l\'upload'));
+        });
+        
+        xhr.open('POST', 'https://api.imgur.com/3/image');
+        xhr.setRequestHeader('Authorization', `Client-ID ${IMGUR_CLIENT_ID}`);
+        xhr.send(formData);
+      });
+    }
+
+    // Fonction pour afficher les vidéos
+    function displayVideos(videos) {
+      videosGrid.innerHTML = '';
+      currentVideos = videos;
+      
+      if (videos.length === 0) {
+        videosGrid.innerHTML = `
+          <div class="no-results" style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+            <i class="fas fa-video-slash" style="font-size: 3rem; margin-bottom: 20px;"></i>
+            <h3>Aucune vidéo trouvée</h3>
+            <p>Essayez de modifier vos filtres ou votre recherche</p>
+          </div>
+        `;
+        return;
+      }
+      
+      videos.forEach(video => {
+        const videoCard = document.createElement('div');
+        videoCard.className = 'video-card';
+        videoCard.dataset.id = video.id;
+        videoCard.dataset.category = video.category;
+        videoCard.dataset.platform = video.platform;
+        videoCard.dataset.title = video.title.toLowerCase();
+        
+        // Générer une miniature aléatoire si aucune n'est fournie
+        let thumbnail = video.thumbnail;
+        if (!thumbnail) {
+          const thumbnails = [
+            'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1507838153414-b4b713384a76?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1495640388908-05fa85288e61?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+          ];
+          thumbnail = thumbnails[Math.floor(Math.random() * thumbnails.length)];
+        }
+        
+        videoCard.innerHTML = `
+          <div class="video-thumbnail">
+            <img src="${thumbnail}" alt="${video.title}" loading="lazy">
+            <div class="play-icon">
+              <i class="fas fa-play"></i>
+            </div>
+          </div>
+          <div class="video-info">
+            <div class="video-category">${video.category}</div>
+            <h3 class="video-title">${video.title}</h3>
+            <div class="video-meta">
+              <div class="video-platform">
+                <i class="fab fa-${video.platform.toLowerCase()} platform-icon"></i>
+                <span>${video.platform}</span>
+              </div>
+              <div class="video-actions">
+                <button class="action-btn share-btn" title="Partager" data-title="${video.title}" data-url="${video.url}">
+                  <i class="fas fa-share-alt"></i>
+                </button>
+                <button class="action-btn" title="Enregistrer">
+                  <i class="fas fa-bookmark"></i>
+                </button>
+              </div>
+            </div>
+            <a href="${video.url}" target="_blank" class="resource-btn" style="margin-top: 15px; display: inline-block;">
+              <i class="fas fa-external-link-alt"></i> Voir sur ${video.platform}
+            </a>
+            <button class="delete-btn" data-id="${video.id}" style="display: none;">
+              <i class="fas fa-trash"></i> Supprimer
+            </button>
+          </div>
+        `;
+        
+        // Ajouter l'événement pour ouvrir la vidéo sur YouTube
+        videoCard.addEventListener('click', (e) => {
+          if (!e.target.closest('.action-btn') && !e.target.closest('.resource-btn') && !e.target.closest('.delete-btn')) {
+            window.open(video.url, '_blank');
+          }
+        });
+        
+        // Ajouter l'événement pour le partage
+        const shareBtn = videoCard.querySelector('.share-btn');
+        shareBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          shareVideo(video.title, video.url);
+        });
+        
+        // Ajouter l'événement pour la suppression (visible uniquement en mode admin)
+        const deleteBtn = videoCard.querySelector('.delete-btn');
+        deleteBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          deleteVideo(video.id);
+        });
+        
+        videosGrid.appendChild(videoCard);
+      });
+      
+      // Animation des cartes de vidéos
+      setTimeout(() => {
+        document.querySelectorAll('.video-card').forEach(card => {
+          card.classList.add('visible');
+        });
+      }, 100);
+    }
+
+    // Fonction pour afficher les vidéos existantes dans l'admin
+    function displayExistingVideos(videos) {
+      existingVideosGrid.innerHTML = '';
+      
+      if (videos.length === 0) {
+        existingVideosGrid.innerHTML = `
+          <div class="no-results" style="grid-column: 1 / -1; text-align: center; padding: 20px;">
+            <i class="fas fa-video-slash" style="font-size: 2rem; margin-bottom: 10px;"></i>
+            <h3>Aucune vidéo trouvée</h3>
+          </div>
+        `;
+        return;
+      }
+      
+      videos.forEach(video => {
+        const videoCard = document.createElement('div');
+        videoCard.className = 'existing-video-card';
+        videoCard.dataset.id = video.id;
+        
+        videoCard.innerHTML = `
+          <h4>${video.title}</h4>
+          <div class="existing-video-meta">
+            <span>${video.category}</span>
+            <span>${video.platform}</span>
+          </div>
+          <div class="existing-video-actions">
+            <button class="delete-btn" data-id="${video.id}">
+              <i class="fas fa-trash"></i> Supprimer
+            </button>
+          </div>
+        `;
+        
+        // Ajouter l'événement pour la suppression
+        const deleteBtn = videoCard.querySelector('.delete-btn');
+        deleteBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          deleteVideo(video.id);
+        });
+        
+        existingVideosGrid.appendChild(videoCard);
+      });
+    }
+
+    // Fonction pour partager une vidéo
+    function shareVideo(title, url) {
+      if (navigator.share) {
+        navigator.share({
+          title: title,
+          url: url
+        })
+        .catch(console.error);
+      } else {
+        // Fallback pour les navigateurs qui ne supportent pas l'API de partage
+        prompt('Copiez le lien pour partager cette vidéo:', url);
+      }
+    }
+
+    // Fonction pour supprimer une vidéo
+    function deleteVideo(videoId) {
+      if (confirm('Êtes-vous sûr de vouloir supprimer cette vidéo ?')) {
+        videosRef.child(videoId).remove()
+          .then(() => {
+            alert('Vidéo supprimée avec succès!');
+          })
+          .catch(error => {
+            console.error('Erreur suppression vidéo:', error);
+            alert('Erreur lors de la suppression de la vidéo');
+          });
+      }
+    }
+
+    // Fonction pour afficher/masquer les boutons de suppression
+    function toggleDeleteButtons(show) {
+      document.querySelectorAll('.delete-btn').forEach(btn => {
+        btn.style.display = show ? 'inline-block' : 'none';
+      });
+    }
+
+    // Fonction pour filtrer les vidéos
+    function filterVideos(videos) {
+      const category = categoryFilter.value;
+      const platform = platformFilter.value;
+      const searchTerm = searchInput.value.toLowerCase();
+      
+      return videos.filter(video => {
+        const categoryMatch = category === 'all' || video.category === category;
+        const platformMatch = platform === 'all' || video.platform === platform;
+        const searchMatch = video.title.toLowerCase().includes(searchTerm) || 
+                            (video.description && video.description.toLowerCase().includes(searchTerm));
+        
+        return categoryMatch && platformMatch && searchMatch;
+      });
+    }
+
+    // Initialisation
+    document.addEventListener('DOMContentLoaded', () => {
+      // Menu hamburger
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+      });
+
+      // Fermer le menu en cliquant sur un lien
+      document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+          hamburger.classList.remove('active');
+          navMenu.classList.remove('active');
+        });
+      });
+
+      // Charger les vidéos depuis Firebase
+      videosGrid.innerHTML = '<div class="loading"><div class="spinner"></div></div>';
+      
+      videosRef.on('value', (snapshot) => {
+        const videosData = [];
+        snapshot.forEach(childSnapshot => {
+          const videoData = childSnapshot.val();
+          videosData.push({
+            id: childSnapshot.key,
+            ...videoData,
+            // S'assurer que la plateforme est détectée si non définie
+            platform: videoData.platform || detectPlatform(videoData.url)
+          });
+        });
+        
+        // Afficher toutes les vidéos initialement
+        displayVideos(filterVideos(videosData));
+        displayExistingVideos(videosData);
+        
+        // Gestionnaire d'événements pour les filtres
+        categoryFilter.addEventListener('change', () => displayVideos(filterVideos(videosData)));
+        platformFilter.addEventListener('change', () => displayVideos(filterVideos(videosData)));
+        searchInput.addEventListener('input', () => displayVideos(filterVideos(videosData)));
+      });
+
+      // Gestion des onglets d'administration
+      adminTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          // Retirer la classe active de tous les onglets
+          adminTabs.forEach(t => t.classList.remove('active'));
+          adminTabContents.forEach(c => c.classList.remove('active'));
+          
+          // Ajouter la classe active à l'onglet cliqué
+          tab.classList.add('active');
+          const tabId = tab.getAttribute('data-tab');
+          document.getElementById(`${tabId}-tab`).classList.add('active');
+        });
+      });
+
+      // Bouton admin pour ouvrir le modal de mot de passe
+      adminBtn.addEventListener('click', () => {
+        passwordModal.classList.add('visible');
+      });
+
+      // Fermer le modal admin
+      closeModal.addEventListener('click', () => {
+        adminModal.classList.remove('visible');
+        toggleDeleteButtons(false);
+      });
+
+      // Fermer le modal en cliquant à l'extérieur
+      adminModal.addEventListener('click', (e) => {
+        if (e.target === adminModal) {
+          adminModal.classList.remove('visible');
+          toggleDeleteButtons(false);
+        }
+      });
+
+      // Annuler l'accès admin
+      cancelPassword.addEventListener('click', () => {
+        passwordModal.classList.remove('visible');
+      });
+
+      // Fermer le modal password en cliquant à l'extérieur
+      passwordModal.addEventListener('click', (e) => {
+        if (e.target === passwordModal) {
+          passwordModal.classList.remove('visible');
+        }
+      });
+
+      // Basculer la visibilité du mot de passe d'accès
+      accessPasswordToggle.addEventListener('click', () => {
+        const type = accessPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+        accessPassword.setAttribute('type', type);
+        accessPasswordToggle.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+      });
+
+      // Basculer la visibilité du mot de passe admin
+      passwordToggle.addEventListener('click', () => {
+        const type = adminPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+        adminPassword.setAttribute('type', type);
+        passwordToggle.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+      });
+
+      // Formulaire de vérification du mot de passe d'accès
+      passwordForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const enteredPassword = accessPassword.value;
+        
+        // Vérifier le mot de passe d'accès
+        if (enteredPassword === ADMIN_PASSWORD) {
+          passwordModal.classList.remove('visible');
+          adminModal.classList.add('visible');
+          accessPassword.value = '';
+          toggleDeleteButtons(true);
+        } else {
+          alert('Mot de passe incorrect!');
+          accessPassword.value = '';
+        }
+      });
+
+      // Gestion de l'upload d'image
+      thumbnailUpload.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        thumbnailUpload.classList.add('dragover');
+      });
+
+      thumbnailUpload.addEventListener('dragleave', () => {
+        thumbnailUpload.classList.remove('dragover');
+      });
+
+      thumbnailUpload.addEventListener('drop', (e) => {
+        e.preventDefault();
+        thumbnailUpload.classList.remove('dragover');
+        
+        const files = e.dataTransfer.files;
+        if (files.length > 0) {
+          handleImageUpload(files[0]);
+        }
+      });
+
+      thumbnailFile.addEventListener('change', (e) => {
+        if (e.target.files.length > 0) {
+          handleImageUpload(e.target.files[0]);
+        }
+      });
+
+      // Fonction pour gérer l'upload d'image
+      async function handleImageUpload(file) {
+        // Vérifier le type de fichier
+        if (!file.type.match('image.*')) {
+          alert('Veuillez sélectionner un fichier image valide (JPG, PNG, etc.)');
+          return;
+        }
+        
+        // Vérifier la taille du fichier (max 10MB)
+        if (file.size > 10 * 1024 * 1024) {
+          alert('Le fichier est trop volumineux. Taille maximale: 10MB');
+          return;
+        }
+        
+        // Afficher l'aperçu
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          previewImage.src = e.target.result;
+          uploadPreview.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+        
+        // Afficher la barre de progression
+        uploadProgress.style.display = 'block';
+        uploadProgressBar.style.width = '0%';
+        
+        try {
+          // Uploader l'image sur Imgur
+          const imageUrl = await uploadImageToImgur(file);
+          
+          // Mettre à jour le champ caché avec l'URL de l'image
+          videoThumbnail.value = imageUrl;
+          
+          // Masquer la barre de progression
+          setTimeout(() => {
+            uploadProgress.style.display = 'none';
+          }, 1000);
+          
+          alert('Image uploadée avec succès!');
+        } catch (error) {
+          console.error('Erreur upload image:', error);
+          alert('Erreur lors de l\'upload de l\'image: ' + error.message);
+          uploadProgress.style.display = 'none';
+        }
+      }
+
+      // Formulaire d'ajout de vidéo
+      videoForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const title = document.getElementById('video-title').value;
+        const url = document.getElementById('video-url').value;
+        const thumbnail = videoThumbnail.value;
+        const category = document.getElementById('video-category').value;
+        const description = document.getElementById('video-description').value;
+        const password = adminPassword.value;
+        
+        // Vérifier le mot de passe admin
+        if (password !== ADMIN_PASSWORD) {
+          alert('Mot de passe administrateur incorrect!');
+          return;
+        }
+        
+        // Détecter la plateforme automatiquement
+        const platform = detectPlatform(url);
+        
+        // Ajouter la vidéo à Firebase
+        const newVideoRef = videosRef.push();
+        newVideoRef.set({
+          title: title,
+          url: url,
+          thumbnail: thumbnail || null,
+          category: category,
+          description: description,
+          platform: platform,
+          dateAdded: new Date().toISOString()
+        })
+        .then(() => {
+          alert('Vidéo ajoutée avec succès!');
+          videoForm.reset();
+          uploadPreview.style.display = 'none';
+          adminModal.classList.remove('visible');
+          toggleDeleteButtons(false);
+        })
+        .catch(error => {
+          console.error('Erreur ajout vidéo:', error);
+          alert('Erreur lors de l\'ajout de la vidéo');
+        });
+      });
+
+      // Bouton retour en haut
+      window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+          backToTop.classList.add('visible');
+        } else {
+          backToTop.classList.remove('visible');
+        }
+        
+        // Afficher le bouton admin uniquement lorsqu'on atteint le footer
+        const footer = document.getElementById('footer');
+        const footerTop = footer.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (footerTop <= windowHeight) {
+          adminBtn.classList.add('visible');
+        } else {
+          adminBtn.classList.remove('visible');
+        }
+      });
+
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // Animation des cartes de ressources
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.resource-card').forEach(card => {
+        observer.observe(card);
+      });
+    });
+  </script>
+</body>
+</html>

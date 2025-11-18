@@ -1,0 +1,1898 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>À Propos - Coach Zakari Tabouala</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Découvrez la vie, la mission et la vision de Coach Zakari Tabouala - Formateur de leaders et voix pour les nations.">
+  <meta name="keywords" content="coach zakari, développement personnel, leadership, transformation, biographie, MCT">
+  <meta name="author" content="Coach Zakari Tabouala">
+  <meta name="robots" content="index, follow">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <style>
+    /* BASE */
+    :root {
+      --primary: #001f3f;
+      --secondary: #0074D9;
+      --accent: #FFD700;
+      --accent-light: rgba(255, 215, 0, 0.1);
+      --text-dark: #0c0f26;
+      --text-light: #f5f5f5;
+      --bg-dark: #0c0f26;
+      --bg-gradient: linear-gradient(135deg, #0c0f26 0%, #1a2a6c 100%);
+      --card-bg: rgba(255, 255, 255, 0.05);
+      --transition: all 0.4s ease;
+      --glow: 0 0 15px rgba(255, 215, 0, 0.4);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+    
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-light);
+      overflow-x: hidden;
+      line-height: 1.7;
+      position: relative;
+    }
+    
+    h1, h2, h3, h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+    }
+    
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+    
+    button {
+      cursor: pointer;
+      border: none;
+      outline: none;
+      transition: var(--transition);
+    }
+    
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .section {
+      padding: 100px 0;
+      position: relative;
+    }
+    
+    .section-title {
+      font-size: 2.8rem;
+      text-align: center;
+      margin-bottom: 60px;
+      position: relative;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      animation: pulseGlow 3s infinite alternate;
+    }
+    
+    @keyframes pulseGlow {
+      0% {
+        text-shadow: 0 0 5px var(--accent);
+      }
+      100% {
+        text-shadow: 0 0 20px var(--accent), 0 0 30px rgba(255, 215, 0, 0.5);
+      }
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    
+    /* HEADER ET NAVIGATION */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(12, 15, 38, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 15px 0;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--accent);
+      z-index: 1001;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    }
+    
+    .logo img {
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      box-shadow: var(--glow);
+      animation: spinGlow 10s linear infinite;
+    }
+    
+    @keyframes spinGlow {
+      0% {
+        transform: rotate(0deg);
+        box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+      }
+      50% {
+        box-shadow: 0 0 20px var(--accent), 0 0 30px rgba(255, 215, 0, 0.6);
+      }
+      100% {
+        transform: rotate(360deg);
+        box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+      }
+    }
+    
+    /* Menu Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 35px;
+      height: 30px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 1001;
+      position: relative;
+    }
+    
+    .hamburger span {
+      display: block;
+      height: 3px;
+      width: 100%;
+      background-color: var(--accent);
+      border-radius: 10px;
+      transition: var(--transition);
+    }
+    
+    /* Menu de navigation */
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .nav-menu li {
+      margin: 0 12px;
+    }
+    
+    .nav-menu li a {
+      position: relative;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 5px 0;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+    
+    .nav-menu li a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-menu li a:hover::after,
+    .nav-menu li a.active::after {
+      width: 100%;
+    }
+    
+    .nav-menu li a:hover,
+    .nav-menu li a.active {
+      color: var(--accent);
+    }
+    
+    /* HERO SECTION - AMÉLIORÉE */
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(to bottom, #0c0f26, #1a2a6c);
+      padding: 120px 0 80px; /* Augmentation du padding-top pour plus d'espace */
+    }
+    
+    .hero-content {
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      padding: 0 20px;
+    }
+    
+    .hero-title {
+      font-size: 4.5rem;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+      animation: heroTitle 4s infinite alternate;
+      line-height: 1.1; /* Amélioration de la lisibilité */
+      word-wrap: break-word; /* Évite les débordements */
+    }
+    
+    @keyframes heroTitle {
+      0% {
+        transform: scale(1);
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+      }
+      100% {
+        transform: scale(1.03);
+        text-shadow: 0 0 30px var(--accent), 0 0 50px rgba(255, 215, 0, 0.8);
+      }
+    }
+    
+    .hero-subtitle {
+      font-size: 1.8rem;
+      margin-bottom: 40px;
+      opacity: 0.9;
+      max-width: 700px;
+      margin: 0 auto 40px;
+    }
+    
+    .hero-mission {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 25px;
+      max-width: 700px;
+      margin: 0 auto;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: var(--glow);
+    }
+    
+    .hero-mission p {
+      font-size: 1.3rem;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+    
+    .hero-mission strong {
+      color: var(--accent);
+      font-weight: 700;
+    }
+    
+    /* TIMELINE SECTION */
+    .timeline-section {
+      background: linear-gradient(to bottom, #1a2a6c, #0c0f26);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .timeline-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/diagmonds.png');
+      opacity: 0.1;
+    }
+    
+    .timeline-container {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+    
+    .timeline-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 100%;
+      background: var(--accent);
+      border-radius: 2px;
+      box-shadow: var(--glow);
+    }
+    
+    .timeline-item {
+      position: relative;
+      width: 50%;
+      padding: 30px 40px;
+      margin-bottom: 80px;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.6s ease;
+    }
+    
+    .timeline-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .timeline-item:nth-child(even) {
+      left: 50%;
+    }
+    
+    .timeline-item:nth-child(odd) {
+      left: 0;
+      padding-right: 80px;
+      text-align: right;
+    }
+    
+    .timeline-item:nth-child(even) {
+      padding-left: 80px;
+      text-align: left;
+    }
+    
+    .timeline-content {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 30px;
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: var(--card-shadow);
+      transition: var(--transition);
+    }
+    
+    .timeline-item:hover .timeline-content {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), var(--glow);
+      border-color: var(--accent);
+    }
+    
+    .timeline-year {
+      position: absolute;
+      top: 20px;
+      width: 80px;
+      height: 80px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #000;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+      z-index: 1;
+      animation: pulse 2s infinite;
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-year {
+      right: -40px;
+    }
+    
+    .timeline-item:nth-child(even) .timeline-year {
+      left: -40px;
+    }
+    
+    .timeline-content h3 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: var(--accent);
+    }
+    
+    .timeline-content p {
+      margin-bottom: 15px;
+      opacity: 0.9;
+    }
+    
+    .timeline-icon {
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin-bottom: 15px;
+    }
+    
+    /* QUOTE SECTION */
+    .quote-section {
+      background: linear-gradient(to right, #001f3f, #0074D9);
+      text-align: center;
+      padding: 100px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .quote-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/black-linen.png');
+      opacity: 0.1;
+    }
+    
+    .quote-container {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+    }
+    
+    .quote {
+      font-size: 2.2rem;
+      font-style: italic;
+      line-height: 1.6;
+      position: relative;
+      padding: 0 40px;
+      animation: quoteGlow 4s infinite alternate;
+    }
+    
+    @keyframes quoteGlow {
+      0% {
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+      }
+      100% {
+        text-shadow: 0 0 20px var(--accent), 0 0 30px rgba(255, 215, 0, 0.5);
+      }
+    }
+    
+    .quote::before,
+    .quote::after {
+      content: "";
+      font-size: 5rem;
+      position: absolute;
+      color: rgba(255, 215, 0, 0.3);
+    }
+    
+    .quote::before {
+      top: -30px;
+      left: 0;
+    }
+    
+    .quote::after {
+      bottom: -50px;
+      right: 0;
+    }
+    
+    .quote-author {
+      margin-top: 40px;
+      font-size: 1.5rem;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    
+    /* WORLD MAP SECTION */
+    .map-section {
+      background: linear-gradient(to bottom, #0c0f26, #1a2a6c);
+      position: relative;
+      overflow: hidden;
+      padding: 100px 0;
+    }
+    
+    .map-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/cartographer.png');
+      opacity: 0.1;
+    }
+    
+    .map-container {
+      position: relative;
+      height: 600px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .world-map {
+      width: 100%;
+      height: 100%;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Equirectangular_projection_SW.jpg/1200px-Equirectangular_projection_SW.jpg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+      border: 2px solid rgba(255, 215, 0, 0.3);
+    }
+    
+    .location {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 15px var(--accent);
+      cursor: pointer;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      animation: pulse 2s infinite;
+    }
+    
+    .location-tooltip {
+      position: absolute;
+      background: rgba(0, 0, 0, 0.9);
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      min-width: 200px;
+      z-index: 3;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      border: 1px solid var(--accent);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    }
+    
+    .location:hover .location-tooltip {
+      opacity: 1;
+    }
+    
+    .location-tooltip h4 {
+      color: var(--accent);
+      margin-bottom: 5px;
+      font-size: 1.1rem;
+    }
+    
+    /* COACHING SECTION */
+    .coaching-section {
+      background: linear-gradient(to bottom, #1a2a6c, #0c0f26);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .coaching-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/diagmonds.png');
+      opacity: 0.1;
+    }
+    
+    .coaching-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+    }
+    
+    .coaching-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 40px 30px;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: var(--card-shadow);
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    
+    .coaching-card.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .coaching-card:hover {
+      transform: translateY(-10px);
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), var(--glow);
+    }
+    
+    .coaching-icon {
+      width: 80px;
+      height: 80px;
+      background: rgba(255, 215, 0, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 25px;
+      font-size: 2.2rem;
+      color: var(--accent);
+    }
+    
+    .coaching-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: var(--accent);
+    }
+    
+    .coaching-card ul {
+      text-align: left;
+      margin: 20px 0;
+      padding-left: 20px;
+    }
+    
+    .coaching-card ul li {
+      margin-bottom: 10px;
+      position: relative;
+    }
+    
+    .coaching-card ul li::before {
+      content: '✓';
+      color: var(--accent);
+      font-weight: bold;
+      position: absolute;
+      left: -20px;
+    }
+    
+    .coaching-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      margin-top: 15px;
+    }
+    
+    .coaching-btn:hover {
+      background: #fff;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+    
+    /* VIDEO SECTION */
+    .video-section {
+      background: linear-gradient(to bottom, #0c0f26, #1a2a6c);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .video-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/cartographer.png');
+      opacity: 0.1;
+    }
+    
+    .video-container {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+    
+    .video-placeholder {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 15px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid rgba(255, 215, 0, 0.3);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    }
+    
+    .video-placeholder-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+    }
+    
+    .video-placeholder-content h3 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: var(--accent);
+    }
+    
+    .video-placeholder-content p {
+      max-width: 600px;
+      margin-bottom: 30px;
+      font-size: 1.2rem;
+    }
+    
+    .coming-soon {
+      display: inline-block;
+      background: var(--accent);
+      color: #000;
+      padding: 10px 25px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      animation: pulse 2s infinite;
+    }
+    
+    /* FOOTER */
+    .footer {
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: #fff;
+      padding: 80px 0 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .footer::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/black-linen.png');
+      opacity: 0.1;
+      pointer-events: none;
+    }
+    
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      gap: 40px;
+    }
+    
+    .footer-logo {
+      flex: 1;
+      min-width: 300px;
+      margin-bottom: 30px;
+    }
+    
+    .footer-logo img {
+      height: 70px;
+      margin-bottom: 25px;
+      border-radius: 50%;
+      border: 3px solid var(--accent);
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
+    }
+    
+    .footer-logo p {
+      max-width: 350px;
+      line-height: 1.8;
+      font-size: 1.1rem;
+    }
+    
+    .footer-links {
+      flex: 1;
+      min-width: 200px;
+      margin-bottom: 30px;
+    }
+    
+    .footer-links h3 {
+      font-size: 1.6rem;
+      margin-bottom: 25px;
+      color: var(--accent);
+      position: relative;
+      padding-bottom: 12px;
+    }
+    
+    .footer-links h3::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    
+    .footer-links ul {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 15px;
+    }
+    
+    .footer-links a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: var(--transition);
+      font-size: 1.1rem;
+    }
+    
+    .footer-links a:hover {
+      color: var(--accent);
+      transform: translateX(8px);
+    }
+    
+    .footer-contact {
+      flex: 1;
+      min-width: 300px;
+      margin-bottom: 30px;
+    }
+    
+    .footer-contact h3 {
+      font-size: 1.6rem;
+      margin-bottom: 25px;
+      color: var(--accent);
+      position: relative;
+      padding-bottom: 12px;
+    }
+    
+    .footer-contact h3::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    
+    .contact-icon {
+      width: 45px;
+      height: 45px;
+      background: rgba(255, 215, 0, 0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 25px;
+      flex-wrap: wrap;
+    }
+    
+    .social-links a {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      transition: var(--transition);
+    }
+    
+    .social-links a:hover {
+      background: var(--accent);
+      color: var(--primary);
+      transform: translateY(-8px);
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding-top: 50px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      margin-top: 50px;
+      font-size: 1.1rem;
+      opacity: 0.8;
+    }
+    
+    /* Bouton retour en haut */
+    .back-to-top {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background: var(--accent);
+      color: #000;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 99;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: var(--transition);
+      font-size: 1.3rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+    
+    .back-to-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .back-to-top:hover {
+      background: #fff;
+      transform: translateY(-5px);
+    }
+    
+    /* ANIMATIONS */
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4);
+      }
+      70% {
+        box-shadow: 0 0 0 15px rgba(255, 215, 0, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
+      }
+    }
+    
+    /* PARTICLES BACKGROUND */
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+    
+    /* NOUVEAU: Section Autodidacte */
+    .autodidacte-section {
+      background: linear-gradient(to bottom, #0c0f26, #1a2a6c);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .autodidacte-content {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 50px;
+      border: 1px solid rgba(255, 215, 0, 0.2);
+      box-shadow: var(--glow);
+    }
+    
+    .autodidacte-content h2 {
+      color: var(--accent);
+      margin-bottom: 30px;
+      font-size: 2.5rem;
+    }
+    
+    .autodidacte-content p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+    
+    .autodidacte-highlight {
+      background: rgba(255, 215, 0, 0.1);
+      border-radius: 10px;
+      padding: 20px;
+      margin: 30px 0;
+      border-left: 4px solid var(--accent);
+    }
+    
+    /* NOUVEAU: Section Transformation */
+    .transformation-section {
+      background: linear-gradient(to bottom, #0c0f26, #1a2a6c);
+      position: relative;
+    }
+    
+    .transformation-content {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .transformation-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+    
+    .transformation-item {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: var(--card-shadow);
+      transition: var(--transition);
+    }
+    
+    .transformation-item:hover {
+      transform: translateY(-10px);
+      border-color: var(--accent);
+    }
+    
+    .transformation-item i {
+      font-size: 3rem;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    
+    .transformation-item h3 {
+      color: var(--accent);
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+    
+    /* RESPONSIVE DESIGN - AMÉLIORÉ */
+    @media (max-width: 1200px) {
+      .section-title {
+        font-size: 2.5rem;
+      }
+      
+      .hero-title {
+        font-size: 3.8rem;
+      }
+    }
+    
+    @media (max-width: 992px) {
+      .timeline-container::before {
+        left: 30px;
+      }
+      
+      .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+        text-align: left;
+        left: 0;
+      }
+      
+      .timeline-item:nth-child(even) {
+        left: 0;
+      }
+      
+      .timeline-item:nth-child(odd) {
+        padding-right: 25px;
+        text-align: left;
+      }
+      
+      .timeline-item:nth-child(odd) .timeline-year,
+      .timeline-item:nth-child(even) .timeline-year {
+        left: 0;
+        right: auto;
+      }
+      
+      .footer-logo img {
+        height: 60px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .section-title {
+        font-size: 2.3rem;
+      }
+      
+      .hero-title {
+        font-size: 3rem;
+        line-height: 1.2; /* Amélioration pour les petits écrans */
+      }
+      
+      .hero-subtitle {
+        font-size: 1.4rem;
+      }
+      
+      /* Menu Hamburger */
+      .hamburger {
+        display: flex;
+      }
+      
+      .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 70%;
+        max-width: 300px;
+        background: rgba(0, 0, 0, 0.95);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: right 0.4s ease;
+        padding-top: 100px;
+      }
+      
+      .nav-menu.active {
+        right: 0;
+      }
+      
+      .nav-menu li {
+        margin: 25px 0;
+        margin-left: 0;
+      }
+      
+      .section {
+        padding: 80px 0;
+      }
+      
+      .footer-logo img {
+        height: 55px;
+      }
+      
+      .quote {
+        font-size: 1.8rem;
+      }
+      
+      .map-container {
+        height: 450px;
+      }
+      
+      .hero-section {
+        padding: 100px 0 60px; /* Ajustement pour mobile */
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .hero-title {
+        font-size: 2.5rem;
+        line-height: 1.3; /* Amélioration pour très petits écrans */
+      }
+      
+      .hero-subtitle {
+        font-size: 1.2rem;
+      }
+      
+      .footer-logo img {
+        height: 50px;
+      }
+      
+      .timeline-item {
+        padding-left: 50px;
+      }
+      
+      .timeline-year {
+        width: 60px;
+        height: 60px;
+        font-size: 1.4rem;
+      }
+      
+      .map-container {
+        height: 350px;
+      }
+      
+      .hero-section {
+        padding: 90px 0 40px; /* Ajustement pour très petits écrans */
+      }
+      
+      .coaching-grid {
+        grid-template-columns: 1fr; /* Une colonne sur mobile */
+      }
+      
+      .autodidacte-content {
+        padding: 30px 20px; /* Réduction du padding sur mobile */
+      }
+    }
+    
+    /* NOUVELLES AMÉLIORATIONS */
+    
+    /* Section Impact International améliorée */
+    .impact-section {
+      background: linear-gradient(to bottom, #1a2a6c, #0c0f26);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+    
+    .impact-item {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 30px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: var(--card-shadow);
+      transition: var(--transition);
+    }
+    
+    .impact-item:hover {
+      transform: translateY(-10px);
+      border-color: var(--accent);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), var(--glow);
+    }
+    
+    .impact-number {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 15px;
+    }
+    
+    .impact-text {
+      font-size: 1.2rem;
+    }
+    
+    /* Amélioration de la lisibilité */
+    .section-subtitle {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 50px;
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+    
+    /* Amélioration de l'accessibilité */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container nav-container">
+      <div class="logo-container">
+        <a href="#" class="logo">
+          <img src="images/logo.png" alt="Logo Coach Zakari">
+          Coach Zakari
+        </a>
+      </div>
+      
+      <button class="hamburger" aria-label="Menu de navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <!-- Menu de navigation -->
+      <ul class="nav-menu">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="temoignages.html">Témoignages</a></li>
+        <li><a href="vidéos.html">Vidéos</a></li>
+        <li><a href="formations.html">Formations</a></li>
+        <li><a href="articles.html">Articles</a></li>
+        <li><a href="livres.html">Livres</a></li>
+        <li><a href="a-propos.html" class="active">À-propos</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- HERO SECTION - AMÉLIORÉE -->
+  <section class="hero-section section">
+    <div id="particles-js"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">ZAKARI TABOUALA</h1>
+      <p class="hero-subtitle">Visionnaire • Leader International • Architecte de la Transformation Humaine</p>
+      
+      <div class="hero-mission">
+        <p>Ma mission est d'<strong>éveiller</strong> les consciences, <strong>inspirer</strong> les transformations profondes et <strong>équiper</strong> une nouvelle génération de leaders capables de transformer leur vie, leurs communautés et le monde entier.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE SECTION -->
+  <section class="timeline-section section">
+    <div class="container">
+      <h2 class="section-title">Mon Parcours</h2>
+      
+      <div class="timeline-container">
+        <div class="timeline-item">
+          <div class="timeline-year">1999</div>
+          <div class="timeline-content">
+            <div class="timeline-icon">
+              <i class="fas fa-baby"></i>
+            </div>
+            <h3>Naissance à Tokombéré</h3>
+            <p>Né dans la région de l'Extrême-Nord du Cameroun, j'ai grandi dans un environnement qui a forgé ma résilience et mon amour pour l'Afrique.</p>
+            <p>Dès mon plus jeune âge, j'ai développé une fascination pour le potentiel humain et le leadership transformationnel.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-year">2015</div>
+          <div class="timeline-content">
+            <div class="timeline-icon">
+              <i class="fas fa-book-medical"></i>
+            </div>
+            <h3>Formation Académique</h3>
+            <p>Études en sciences infirmières combinées à une formation autodidacte intensive en psychologie, philosophie, informatque, développement personnel et bien plus d'autres disciplines.</p>
+            <p>Développement de ma méthode unique d'apprentissage et de transmission des connaissances.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-year">2018</div>
+          <div class="timeline-content">
+            <div class="timeline-icon">
+              <i class="fas fa-globe-africa"></i>
+            </div>
+            <h3>Éveil Panafricain</h3>
+            <p>L'analyse approfondie des problématique africaines n'a fait que renforcer ma conviction en une afrique unie, forte et résolument Tournée vers la prospérité.</p>
+            <p>Naissance de la conviction que "L'Afrique possède en elle-même les solutions à ses défis".</p>
+            <p>Chaque Africain porte en lui le potentiel d'imapacter le monde.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-year">2020</div>
+          <div class="timeline-content">
+            <div class="timeline-icon">
+              <i class="fas fa-microphone-alt"></i>
+            </div>
+            <h3>Premières session de formation</h3>
+            <p>Lancement de mon activité d'enseignement avec des séminaires en ligne qui ont touché plus de 10,000 personnes en un an.</p>
+            <p>Formalisation de la méthode MCT (Motivation, Compassion, Transformation).</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-year">2023</div>
+          <div class="timeline-content">
+            <div class="timeline-icon">
+              <i class="fas fa-book"></i>
+            </div>
+            <h3>Publication du Premier Livre</h3>
+            <p>"L'Art de la Maîtrise Intérieure" présente ma philosophie de transformation personnelle et communautaire.</p>
+            <p>"Des centaines de personnes ont été touchées par le Livre, j'en suis sincèrement heureux."</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-year">2024</div>
+          <div class="timeline-content">
+            <div class="timeline-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <h3>Fondation de l'Académie MCT</h3>
+            <p>L'Académie MCT est née comme un centre d'excellence pour former une nouvelle génération de leaders et impulser une transformation profonde et durable.</p>
+            <p>Déjà des centaines leaders formés dans plusieurs pays dès la première année d'activité.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION AUTODIDACTE -->
+  <section class="autodidacte-section section">
+    <div class="container">
+      <div class="autodidacte-content">
+        <h2>L'Autodidacte Visionnaire</h2>
+        <p>Mon parcours est celui d'un éternel apprenant. Bien que diplômé en sciences infirmières, mes plus grandes compétences viennent de mon apprentissage autodidacte intensif.</p>
+        
+        <div class="autodidacte-highlight">
+          <p>"Un grand coach est un grand lecteur. Chaque jour, je consacre plusieurs heures à l'étude des disciplines qui façonnent l'être humain : psychologie, philosophie, neurosciences, stratégie, spiritualité, Etc..."</p>
+        </div>
+        
+        <p>Cette approche autodidacte m'a permis de développer une vision holistique du développement personnel, combinant transformation spirituelle, maîtrise sociale et haute gestion de la vie. Ma polyvalence me permet d'aborder les défis humains sous des angles multiples et innovants.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE SECTION -->
+  <section class="quote-section">
+    <div class="container quote-container">
+      <blockquote class="quote">
+        "La véritable puissance ne réside pas dans ce que nous accomplissons seuls, mais dans notre capacité à élever les autres vers leur propre grandeur. 
+        Chaque leader que nous formons devient un phare pour sa communauté, pour son pays et pour le monde entier."
+      </blockquote>
+      <div class="quote-author">- Zakari Tabouala</div>
+    </div>
+  </section>
+
+  <!-- WORLD MAP SECTION -->
+  <section class="map-section section">
+    <div class="container">
+      <h2 class="section-title">Impact International</h2>
+      <p class="section-subtitle">Pays et villes où je partagerai mon message de transformation dans les 10 prochaines années</p>
+      
+      <div class="map-container">
+        <div class="world-map">
+          <!-- Afrique -->
+          <div class="location" style="top: 52%; left: 48%;">
+            <div class="location-tooltip">
+              <h4>Yaoundé, Cameroun</h4>
+              <p>Séminaire "Leadership Africain" - Oct 2025</p>
+            </div>
+          </div>
+          <div class="location" style="top: 50%; left: 52%;">
+            <div class="location-tooltip">
+              <h4>Lagos, Nigeria</h4>
+              <p>Conférence "Transformation Personnelle" - Nov 2027</p>
+            </div>
+          </div>
+          <div class="location" style="top: 56%; left: 55%;">
+            <div class="location-tooltip">
+              <h4>Johannesburg, Afrique du Sud</h4>
+              <p>Sommet des Leaders 2029</p>
+            </div>
+          </div>
+          <div class="location" style="top: 45%; left: 50%;">
+            <div class="location-tooltip">
+              <h4>Dakar, Sénégal</h4>
+              <p>Formation "Maîtrise de Vie" - Jan 2029</p>
+            </div>
+          </div>
+          <div class="location" style="top: 40%; left: 53%;">
+            <div class="location-tooltip">
+              <h4>Abidjan, Côte d'Ivoire</h4>
+              <p>Retraite Spirituelle - Fév 2028</p>
+            </div>
+          </div>
+          
+          <!-- Europe -->
+          <div class="location" style="top: 35%; left: 50%;">
+            <div class="location-tooltip">
+              <h4>Paris, France</h4>
+              <p>Conférence "Leadership Global" - Mars 2028</p>
+            </div>
+          </div>
+          <div class="location" style="top: 33%; left: 53%;">
+            <div class="location-tooltip">
+              <h4>Bruxelles, Belgique</h4>
+              <p>Séminaire "Haute Gestion de Vie" - Avr 2028</p>
+            </div>
+          </div>
+          
+          <!-- Amérique -->
+          <div class="location" style="top: 45%; left: 25%;">
+            <div class="location-tooltip">
+              <h4>New York, États-Unis</h4>
+              <p>Conférence "Transformation Sociale" - Mai 2029</p>
+            </div>
+          </div>
+          <div class="location" style="top: 55%; left: 28%;">
+            <div class="location-tooltip">
+              <h4>Montréal, Canada</h4>
+              <p>Tournée Universitaire - Juin 2029</p>
+            </div>
+          </div>
+          
+          <!-- Asie -->
+          <div class="location" style="top: 40%; left: 75%;">
+            <div class="location-tooltip">
+              <h4>Tokyo, Japon</h4>
+              <p>Forum "Wisdom Exchange" - 2029</p>
+            </div>
+          </div>
+          <div class="location" style="top: 35%; left: 78%;">
+            <div class="location-tooltip">
+              <h4>Séoul, Corée du Sud</h4>
+              <p>Conférence "Spiritualité et Performance" - 2029</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION IMPACT - NOUVELLE SECTION -->
+  <section class="impact-section section">
+    <div class="container">
+      <h2 class="section-title">Impact Mondial</h2>
+      <p class="section-subtitle">L'étendue de mon influence à travers le monde</p>
+      
+      <div class="impact-grid">
+        <div class="impact-item">
+          <div class="impact-number">10K+</div>
+          <div class="impact-text">Personnes touchées par mes formations</div>
+        </div>
+        
+        <div class="impact-item">
+          <div class="impact-number">15+</div>
+          <div class="impact-text">Pays d'influence</div>
+        </div>
+        
+        <div class="impact-item">
+          <div class="impact-number">500+</div>
+          <div class="impact-text">Leaders formés</div>
+        </div>
+        
+        <div class="impact-item">
+          <div class="impact-number">3</div>
+          <div class="impact-text">Langues de communication</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION TRANSFORMATION -->
+  <section class="transformation-section section">
+    <div class="container">
+      <h2 class="section-title">Transformation Globale</h2>
+      <p class="section-subtitle">Les trois dimensions de mon enseignement</p>
+      
+      <div class="transformation-grid">
+        <div class="transformation-item">
+          <i class="fas fa-brain"></i>
+          <h3>Développement Personnel</h3>
+          <p>Maîtrise de soi, discipline mentale et réalisation du potentiel individuel au plus haut niveau.</p>
+        </div>
+        
+        <div class="transformation-item">
+          <i class="fas fa-hands-praying"></i>
+          <h3>Transformation Spirituelle</h3>
+          <p>Éveil de la conscience, connexion à sa mission de vie et alignement avec les lois universelles.</p>
+        </div>
+        
+        <div class="transformation-item">
+          <i class="fas fa-globe"></i>
+          <h3>Maîtrise Sociale</h3>
+          <p>Gestion des relations, influence positive et création d'impact durable dans les communautés et dans le monde entier.</p>
+        </div>
+        
+        <div class="transformation-item">
+          <i class="fas fa-chess-king"></i>
+          <h3>Haute Gestion du Monde</h3>
+          <p>Stratégies avancées pour naviguer et façonner les systèmes complexes de notre époque.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COACHING SECTION -->
+  <section class="coaching-section section">
+    <div class="container">
+      <h2 class="section-title">Philosophie MCT</h2>
+      <p class="section-subtitle">Le système intégré pour la transformation humaine</p>
+      
+      <div class="coaching-grid">
+        <div class="coaching-card">
+          <div class="coaching-icon">
+            <i class="fas fa-fire"></i>
+          </div>
+          <h3>Motivation</h3>
+          <p>Réveiller la flamme intérieure qui pousse à l'excellence et à l'accomplissement</p>
+          <ul>
+            <li>Découverte du pourquoi profond</li>
+            <li>Alignement valeurs-actions</li>
+            <li>Création de systèmes de motivation durable</li>
+            <li>Transcender les limitations mentales</li>
+          </ul>
+          <a href="#" class="coaching-btn">En savoir plus</a>
+        </div>
+        
+        <div class="coaching-card">
+          <div class="coaching-icon">
+            <i class="fas fa-hands-helping"></i>
+          </div>
+          <h3>Compassion</h3>
+          <p>Développer un leadership au service des autres des communautés et du monde entier</p>
+          <ul>
+            <li>Intelligence émotionnelle appliquée</li>
+            <li>Écoute active et empathie stratégique</li>
+            <li>Leadership serviteur</li>
+            <li>Création d'impact communautaire et Mondiale</li>
+          </ul>
+          <a href="#" class="coaching-btn">En savoir plus</a>
+        </div>
+        
+        <div class="coaching-card">
+          <div class="coaching-icon">
+            <i class="fas fa-sync-alt"></i>
+          </div>
+          <h3>Transformation</h3>
+          <p>Opérer des changements durables dans les vies, les organisations et dans le monde</p>
+          <ul>
+            <li>Processus de changement systémique</li>
+            <li>Modèles de transformation éprouvés</li>
+            <li>Création d'héritage</li>
+            <li>Mesure d'impact et pérennité</li>
+          </ul>
+          <a href="#" class="coaching-btn">En savoir plus</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO SECTION -->
+  <section class="video-section section">
+    <div class="container">
+      <h2 class="section-title">Documentaire Exclusive</h2>
+      <p class="section-subtitle">Plongez dans l'univers et la mission de Coach Zakari</p>
+      
+      <div class="video-container">
+        <div class="video-placeholder">
+          <div class="video-placeholder-content">
+            <h3>AFRIQUE RENAISSANTE : Le Voyage d'un Visionnaire</h3>
+            <p>Un documentaire exclusif retraçant mon parcours de Tokombéré à l'influence internationale. Découvrez les coulisses de mon évolution, les défis surmontés et les histoires inspirantes de leaders transformés.</p>
+            <div class="coming-soon">Bientôt Disponible</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="images/logo.png" alt="Logo Coach Zakari">
+          <h3>Coach Zakari Tabouala</h3>
+          <p>Formateur des leaders, voix pour les nations. Rejoignez le mouvement MCT "Motivation, Compassion et Transformation" pour une métamorphose personnelle et collective.</p>
+        </div>
+        
+        <div class="footer-links">
+          <h3>Liens Rapides</h3>
+          <ul>
+            <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+            <li><a href="adhesion.html"><i class="fas fa-globe"></i> Adhésion</a></li>
+            <li><a href="temoignages.html"><i class="fas fa-comments"></i> Témoignages</a></li>
+            <li><a href="formations.html"><i class="fas fa-graduation-cap"></i> Formations</a></li>
+            <li><a href="livres.html"><i class="fas fa-book"></i> Livres</a></li>
+            <li><a href="vidéos.html"><i class="fas fa-video"></i> Vidéos</a></li>
+            <li><a href="a-propos.html"><i class="fas fa-user-circle"></i> À-propos</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-contact">
+          <h3>Contact</h3>
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div>Yaoundé, Cameroun</div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div>+237 690 358 726</div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>contact@coachzakari.com</div>
+            </div>
+          </div>
+          
+          <div class="social-links">
+            <a href="https://facebook.com/Coach Zakari Tabouala" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/CoachZakari" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com/coachzakaritabouala" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://youtube.com/coachzakaritabouala" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://wa.me/237690358726" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://tiktok.com/@Coachzakaritabouala" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="https://linkedin.com/in/Coachzakaritabouala" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2023 Coach Zakari Tabouala. Tous droits réservés. | <a href="#">Confidentialité</a> | <a href="#">Conditions d'utilisation</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bouton retour en haut -->
+  <button class="back-to-top" id="back-to-top" aria-label="Retour en haut">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script>
+    // Configuration des particules pour l'arrière-plan
+    document.addEventListener('DOMContentLoaded', function() {
+      // Créer le canvas pour les particules
+      const canvas = document.createElement('canvas');
+      canvas.id = 'particles-js';
+      document.querySelector('.hero-section').appendChild(canvas);
+      
+      // Initialiser Three.js pour les particules
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      
+      // Créer les particules
+      const particlesGeometry = new THREE.BufferGeometry();
+      const particlesCount = 5000;
+      
+      const posArray = new Float32Array(particlesCount * 3);
+      const colorArray = new Float32Array(particlesCount * 3);
+      
+      for(let i = 0; i < particlesCount * 3; i++) {
+        posArray[i] = (Math.random() - 0.5) * 10;
+        colorArray[i] = Math.random();
+      }
+      
+      particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+      particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colorArray, 3));
+      
+      const particlesMaterial = new THREE.PointsMaterial({
+        size: 0.01,
+        vertexColors: true,
+        transparent: true,
+        opacity: 0.8,
+        sizeAttenuation: true
+      });
+      
+      const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+      scene.add(particlesMesh);
+      
+      camera.position.z = 5;
+      
+      // Animation des particules
+      function animate() {
+        requestAnimationFrame(animate);
+        
+        particlesMesh.rotation.x += 0.0005;
+        particlesMesh.rotation.y += 0.0005;
+        
+        renderer.render(scene, camera);
+      }
+      
+      animate();
+      
+      // Redimensionnement
+      window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
+      
+      // Animation de la timeline
+      const timelineItems = document.querySelectorAll('.timeline-item');
+      
+      const timelineObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.3 });
+      
+      timelineItems.forEach(item => {
+        timelineObserver.observe(item);
+      });
+      
+      // Animation des cartes de coaching
+      const coachingCards = document.querySelectorAll('.coaching-card');
+      
+      const coachingObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.classList.add('visible');
+            }, index * 200);
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      coachingCards.forEach(card => {
+        coachingObserver.observe(card);
+      });
+      
+      // Bouton retour en haut
+      const backToTop = document.getElementById('back-to-top');
+      
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+          backToTop.classList.add('visible');
+        } else {
+          backToTop.classList.remove('visible');
+        }
+      });
+      
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+      
+      // Menu mobile
+      const hamburger = document.querySelector('.hamburger');
+      const navMenu = document.querySelector('.nav-menu');
+      
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+      });
+      
+      // Fermer le menu au clic sur un lien
+      document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+          hamburger.classList.remove('active');
+          navMenu.classList.remove('active');
+        });
+      });
+      
+      // Animation des cartes d'impact
+      const impactItems = document.querySelectorAll('.impact-item');
+      
+      impactItems.forEach((item, index) => {
+        setTimeout(() => {
+          item.style.opacity = '1';
+          item.style.transform = 'translateY(0)';
+        }, 300 + (index * 100));
+      });
+    });
+  </script>
+</body>
+</html>
